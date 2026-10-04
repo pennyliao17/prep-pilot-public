@@ -11,8 +11,6 @@ import { LoadingSpinner } from "./LoadingSpinner";
 // holds the authoritative copy and the prompt says it is an estimate.
 const COMPANY_LABELS: Record<Company, string> = { amazon: "Amazon", make: "Make", meta: "Meta" };
 
-const COMPANY_ORDER: Company[] = ["amazon", "make", "meta"];
-
 const POSITION_LABELS: Record<string, string> = {
 	below_floor: "Below the band floor",
 	lower_band: "Lower end of the band",
@@ -83,7 +81,7 @@ export default function SalaryPositioningTool({ company }: { company: Company })
 			</p>
 			<p className="salary-tool-caveat">Basis: {band.source} Always re-check levels.fyi and Glassdoor before a real negotiation.</p>
 
-			<h4 className="salary-tool-table-title">All estimated bands at a glance</h4>
+			<h4 className="salary-tool-table-title">Estimated bands for {COMPANY_LABELS[company]} at a glance</h4>
 			<div className="salary-tool-table-wrap">
 				<table className="salary-tool-table">
 					<thead>
@@ -96,32 +94,30 @@ export default function SalaryPositioningTool({ company }: { company: Company })
 						</tr>
 					</thead>
 					<tbody>
-						{COMPANY_ORDER.flatMap((c) =>
-							SALARY_REGION_OPTIONS.map((r) => {
-								const b = DISPLAY_BANDS[c][r.value];
-								return (
-									<tr key={`${c}:${r.value}`} className={c === company && r.value === region ? "is-selected" : undefined}>
-										<td>{COMPANY_LABELS[c]}</td>
-										<td>{r.label}</td>
-										<td>
-											{b.roleLabel}, {b.cityLabel}
-										</td>
-										<td>
-											{b.currency} {b.floor.toLocaleString()}–{b.ceiling.toLocaleString()}
-											<br />
-											<span className="salary-tool-unit">{b.period}</span>
-										</td>
-										<td className="salary-tool-basis">{b.source}</td>
-									</tr>
-								);
-							})
-						)}
+						{SALARY_REGION_OPTIONS.map((r) => {
+							const b = DISPLAY_BANDS[company][r.value];
+							return (
+								<tr key={r.value} className={r.value === region ? "is-selected" : undefined}>
+									<td>{COMPANY_LABELS[company]}</td>
+									<td>{r.label}</td>
+									<td>
+										{b.roleLabel}, {b.cityLabel}
+									</td>
+									<td>
+										{b.currency} {b.floor.toLocaleString()}–{b.ceiling.toLocaleString()}
+										<br />
+										<span className="salary-tool-unit">{b.period}</span>
+									</td>
+									<td className="salary-tool-basis">{b.source}</td>
+								</tr>
+							);
+						})}
 					</tbody>
 				</table>
 			</div>
 			<p className="salary-tool-caveat">
 				These are my rough estimates from public salary sites (levels.fyi, Glassdoor) as of October 2026 — not offers and not any
-				company's real pay scale. Treat Make's rows as low confidence.
+				company's real pay scale.{company === "make" && " Make has very little public pay data, so treat its rows as low confidence."}
 			</p>
 
 			<div className="salary-tool-form">
