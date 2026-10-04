@@ -11,6 +11,8 @@ import { LoadingSpinner } from "./LoadingSpinner";
 // holds the authoritative copy and the prompt says it is an estimate.
 const COMPANY_LABELS: Record<Company, string> = { amazon: "Amazon", make: "Make", meta: "Meta" };
 
+const COMPANY_ORDER: Company[] = ["amazon", "make", "meta"];
+
 const POSITION_LABELS: Record<string, string> = {
 	below_floor: "Below the band floor",
 	lower_band: "Lower end of the band",
@@ -47,8 +49,8 @@ export default function SalaryPositioningTool({ company }: { company: Company })
 		setLoading(true);
 		try {
 			const res = await postSalaryPositioning({
-					company,
-					region,
+				company,
+				region,
 				currentSalary: Number(currentSalary),
 				currentSalaryCurrency: currentSalaryCurrency.trim(),
 				monthlyRent: Number(monthlyRent),
@@ -57,7 +59,9 @@ export default function SalaryPositioningTool({ company }: { company: Company })
 			});
 			setResultState({ key: resultKey, result: res });
 		} catch (err) {
-			setError(err instanceof Error ? err.message : "Something went wrong.");
+			const message = err instanceof Error ? err.message : "Something went wrong.";
+			// "are required" means the request was missing fields this version sends, i.e. an old page is still open.
+			setError(message.includes("are required") ? `${message} Try refreshing the page — you may have an older version open.` : message);
 		} finally {
 			setLoading(false);
 		}
@@ -78,6 +82,47 @@ export default function SalaryPositioningTool({ company }: { company: Company })
 				company's allowance), so pick the region before you submit.
 			</p>
 			<p className="salary-tool-caveat">Basis: {band.source} Always re-check levels.fyi and Glassdoor before a real negotiation.</p>
+
+			<h4 className="salary-tool-table-title">All estimated bands at a glance</h4>
+			<div className="salary-tool-table-wrap">
+				<table className="salary-tool-table">
+					<thead>
+						<tr>
+							<th>Company</th>
+							<th>Region</th>
+							<th>Role and location</th>
+							<th>Estimated band</th>
+							<th>Basis</th>
+						</tr>
+					</thead>
+					<tbody>
+						{COMPANY_ORDER.flatMap((c) =>
+							SALARY_REGION_OPTIONS.map((r) => {
+								const b = DISPLAY_BANDS[c][r.value];
+								return (
+									<tr key={`${c}:${r.value}`} className={c === company && r.value === region ? "is-selected" : undefined}>
+										<td>{COMPANY_LABELS[c]}</td>
+										<td>{r.label}</td>
+										<td>
+											{b.roleLabel}, {b.cityLabel}
+										</td>
+										<td>
+											{b.currency} {b.floor.toLocaleString()}–{b.ceiling.toLocaleString()}
+											<br />
+											<span className="salary-tool-unit">{b.period}</span>
+										</td>
+										<td className="salary-tool-basis">{b.source}</td>
+									</tr>
+								);
+							})
+						)}
+					</tbody>
+				</table>
+			</div>
+			<p className="salary-tool-caveat">
+				These are my rough estimates from public salary sites (levels.fyi, Glassdoor) as of October 2026 — not offers and not any
+				company's real pay scale. Treat Make's rows as low confidence.
+			</p>
 
 			<div className="salary-tool-form">
 				<label>
