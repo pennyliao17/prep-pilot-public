@@ -2320,3 +2320,42 @@
 	color: var(--ink-muted);
 	font-style: italic;
 }
+
+/* ---------- Empty state (Dashboard with no attempts) ---------- */
+
+.empty-state {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 12px;
+	padding: 40px 16px 56px;
+	text-align: center;
+}
+
+.empty-state p {
+	max-width: 440px;
+	margin: 0;
+	color: var(--ink-muted);
+}
+
+.empty-state-doodle {
+	width: 180px;
+	height: auto;
+	animation: empty-state-bob 3.2s ease-in-out infinite;
+}
+
+@keyframes empty-state-bob {
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(-6px);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.empty-state-doodle {
+		animation: none;
+	}
+}

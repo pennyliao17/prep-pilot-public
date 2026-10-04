@@ -6,6 +6,7 @@ import FeedbackDisplay from "./FeedbackDisplay";
 import ResumeCoachResultDisplay from "./ResumeCoachResultDisplay";
 import TopicReviewPanel from "./TopicReviewPanel";
 import { LoadingSpinner } from "./LoadingSpinner";
+import { NotebookDoodle } from "./Doodles";
 
 function typeLabel(type: string): string {
 	return QUESTION_TYPES.find((t) => t.value === type)?.label ?? type;
@@ -106,7 +107,12 @@ export default function Dashboard() {
 	if (loading) return <LoadingSpinner variant="block" label="Loading your practice history..." />;
 	if (error) return <p className="error">{error}</p>;
 	if (!data || data.attempts.length === 0) {
-		return <p>No practice attempts yet — answer a question in Practice to start building your history here.</p>;
+		return (
+			<div className="empty-state">
+				<NotebookDoodle className="empty-state-doodle" />
+				<p>No practice attempts yet — answer a question in Practice to start building your history here.</p>
+			</div>
+		);
 	}
 
 	const dayGroups = groupByDay(data.attempts);
