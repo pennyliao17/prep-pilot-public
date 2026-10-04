@@ -142,7 +142,7 @@ The first phase supports several question types without cutting any, though they
 6. **System Design Guide**
    - A cheat sheet, full worked example answers, and AI/LLM infrastructure notes (English only, static, searchable), for system design and TPM question types
 
-7. **Reviewer demo account (read-only)**
+7. **Viewer demo account (read-only)**
    - For people who want to look at the work: a separate username / password sign-in, a fail-closed route allowlist, and 3 live AI gradings per day. It has its own Dashboard (empty at first), Company Knowledge, a hand-written generic Interview Prep Guide for each of the three companies (switched with a Company dropdown), and an example "Salary Positioning" tool (the user enters their pay and living costs; an AI coach positions an ask within a per-company, per-region (Europe or United States) estimated band taken from levels.fyi / Glassdoor, with a reminder to cross-check; usable once every 10 days per company).
    - It can see no personal data: the resume, the Story Bank, and the real Interview Rounds are outside its reach.
 
@@ -182,4 +182,4 @@ Learning outcomes (mostly self-assessed):
 - No integration with human coaches or scheduling systems
 - No heavy system design whiteboard editor (text plus simple diagrams is enough)
 - No paid email reports; Resend is only used for sign-in codes (free allowance), so it creates no new cost
-- No open registration for general users: the real account is allowlist-only, and public demonstration goes only through the read-only reviewer account
+- No open registration for general users: the real account is allowlist-only, and public demonstration goes only through the read-only viewer account

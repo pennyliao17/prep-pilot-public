@@ -204,7 +204,7 @@ export default function LoginGate() {
 						<div className="login-divider">
 							<span>OR</span>
 						</div>
-						<p className="login-code-hint">Reviewer demo login — read-only, limited to 3 AI feedback requests per day.</p>
+						<p className="login-code-hint">Viewer demo login — read-only, limited to 3 AI feedback requests per day.</p>
 						<label className="login-field-label" htmlFor="demo-username">
 							Username
 						</label>
@@ -226,13 +226,13 @@ export default function LoginGate() {
 							onChange={(e) => setDemoPassword(e.target.value)}
 						/>
 						<button onClick={handleDemoSignIn} disabled={!demoUsername.trim() || !demoPassword.trim() || demoLoading}>
-							{demoLoading ? <LoadingSpinner label="Signing in..." /> : "Sign in as reviewer"}
+							{demoLoading ? <LoadingSpinner label="Signing in..." /> : "Sign in as viewer"}
 						</button>
 						{demoError && <p className="error">{demoError}</p>}
 					</div>
 				) : (
 					<button type="button" className="login-link-button demo-login-toggle" onClick={() => setShowDemoLogin(true)}>
-						Viewing as a reviewer?
+						Sign in as a viewer instead?
 					</button>
 				)}
 			</div>

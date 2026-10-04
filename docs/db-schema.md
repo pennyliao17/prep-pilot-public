@@ -21,7 +21,7 @@ Columns (in use, see `worker/migrations/0001_init.sql`; no new migration was nee
 - `created_at` – `timestamptz`, default `now()`
 - `updated_at` – `timestamptz`, set to `now()` by hand in the upsert statement on every sign-in (there is no database-level trigger)
 
-The reviewer demo account (since 2026-10) is just another row here (`demo-viewer@preppilot.local`), created on its first graded answer. Its attempts are tied to its own `user_id`, so they can never mix with the owner's data.
+The viewer demo account (since 2026-10) is just another row here (`demo-viewer@preppilot.local`), created on its first graded answer. Its attempts are tied to its own `user_id`, so they can never mix with the owner's data.
 
 **Columns deliberately not added yet** (see the to-dos in `docs/tasks.md`): `plan` / `tier` / trial-count columns for a paid or trial model. Only one allowlisted email can use the app right now, so the paid / trial architecture decision is postponed; `attempts.user_id` is already filled with the real user, so if it is built later it can just query `attempts` with no schema change.
 
@@ -195,7 +195,7 @@ Purpose: turns "an interview has several rounds, and each tests something differ
 
 Index: `idx_interview_rounds_user_company` on (`user_id`, `company`).
 
-`GET /api/interview-rounds` requires the `company` query parameter (see `docs/api-spec.md`) and cannot fetch everything at once the way `story_bank` can: this page's data is naturally "one set per company", and the frontend always drives the query from a company dropdown. These rows are the owner's personal data; the reviewer demo account cannot reach them and gets a separate static page instead.
+`GET /api/interview-rounds` requires the `company` query parameter (see `docs/api-spec.md`) and cannot fetch everything at once the way `story_bank` can: this page's data is naturally "one set per company", and the frontend always drives the query from a company dropdown. These rows are the owner's personal data; the viewer demo account cannot reach them and gets a separate static page instead.
 
 ---
 

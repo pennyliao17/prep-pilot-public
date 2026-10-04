@@ -134,7 +134,7 @@ function App() {
 					PM Interview Practice
 					<SwirlDoodle className="title-swirl" />
 				</h1>
-				{isDemo && <span className="demo-badge">Reviewer demo</span>}
+				{isDemo && <span className="demo-badge">Viewer demo</span>}
 				<div className="topbar-actions">
 					<button type="button" className="signout-button" onClick={signOut}>
 						Sign out

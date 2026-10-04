@@ -284,7 +284,7 @@ These were not in the original plan; they grew out of real needs during use:
 - **Resume Coach rework**: a persistent resume plus target job description plus Story Bank, four sources generated together, and a usage history that auto-expires after 5 days
 - **Company Knowledge**, **Interview Rounds**, and **System Design Guide**: three knowledge-style tabs
 - **Grading model upgrade**: from 8B to llama-3.3-70b (the response format differs, and the Worker handles the compatibility)
-- **Reviewer demo account**: a separate sign-in, a route allowlist, a daily cap of 3 AI gradings, a generic per-company Interview Prep Guide (Company dropdown), and a Salary Positioning tool with a per-company, per-region estimated band (once every 10 days per company)
+- **Viewer demo account**: a separate sign-in, a route allowlist, a daily cap of 3 AI gradings, a generic per-company Interview Prep Guide (Company dropdown), and a Salary Positioning tool with a per-company, per-region estimated band (once every 10 days per company)
 - **Tests**: the worker tests deliberately hit the real Neon, but run as a dedicated test identity and never touch the owner's real data
 - **Public repo**: on 2026-10-04 a privacy audit and cleanup before going public was done, and the repo was published as a fresh single-commit repo (private engineering retrospectives and reading notes are not published with it)
 

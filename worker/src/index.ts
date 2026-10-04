@@ -512,7 +512,7 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
 	}
 
 	if (request.method === "POST" && pathname === "/api/auth/demo") {
-		// Shared read-mostly credential for one known reviewer, not a public
+		// Shared read-mostly credential for one known viewer, not a public
 		// sign-up — tightly rate-limited so it can't be brute-forced, and the
 		// resulting session is scoped down hard below (DEMO_ALLOWED_ROUTES),
 		// not a real account on the single-user allowlist.

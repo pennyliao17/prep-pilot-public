@@ -1,7 +1,7 @@
 # Roadmap – PrepPilot
 
 First version: 2026-07-06 (a health check from both a PM and a security angle)
-Last full update: 2026-07-14. **2026-10-04**: added the current-status note in §0 and the recent milestones in §F (multiple companies, the 70B model, the reviewer demo account, the public repo). Smaller updates: 2026-07-16 (the Dashboard full-review feature, clearing the test data, formally entering the usage period); **2026-07-18** (the full Resume Coach rework: Story Bank + 4-source generation + auto-expiring usage history; the Mock Interview tab was removed; the problems and lessons from that rework are in the project's private retrospective).
+Last full update: 2026-07-14. **2026-10-04**: added the current-status note in §0 and the recent milestones in §F (multiple companies, the 70B model, the viewer demo account, the public repo). Smaller updates: 2026-07-16 (the Dashboard full-review feature, clearing the test data, formally entering the usage period); **2026-07-18** (the full Resume Coach rework: Story Bank + 4-source generation + auto-expiring usage history; the Mock Interview tab was removed; the problems and lessons from that rework are in the project's private retrospective).
 
 This document is the strategy layer: "why we build and what comes first". Item-by-item execution status is in `docs/tasks.md`.
 
@@ -13,7 +13,7 @@ This document is the strategy layer: "why we build and what comes first". Item-b
 
 Three items originally scheduled for Growth (3 months out) were all done early: the company knowledge board, the hype script, and the mock interview loop. The mock interview loop was later removed on 2026-07-18 at the user's request (after using it, it turned out not to be needed; see the private retrospective). The product then had four tabs (Practice / Resume Coach / Dashboard / Company Knowledge), 88 questions across 7 types, each type with a rubric and a structured example answer, history and trends, and 9 business lines each with complete memorizable sample answers. The Resume Coach was reworked on 2026-07-18 from "paste a one-off resume snippet" into "a persistent resume + target job description + an editable Story Bank, with four sources (resume / JD / story / the 16 LPs) generating every AI output together", plus a usage history (auto-expiring after 5 days, implemented with a Cron Trigger). **For a "single-person interview prep tool" the product is complete, and closer than the 2026-07-14 version to the shape the user actually wants (the mock interview was built first and only after using it was it clear it was not needed; that is itself a live validation of the "diminishing marginal value of features" insight).**
 
-**2026-10-04 status note**: the product now has six tabs (Practice / Resume Coach / Dashboard / Company Knowledge / Interview Rounds / System Design Guide), three companies (Amazon / Make / Meta), and 130 questions across the 7 types (Amazon 88, Make 21, Meta 21). The grading model is now llama-3.3-70b, there is a read-only demo account for reviewers, and the repo is public. The three insights below are the July 2026 judgments, kept as history, with later developments noted at the end of each.
+**2026-10-04 status note**: the product now has six tabs (Practice / Resume Coach / Dashboard / Company Knowledge / Interview Rounds / System Design Guide), three companies (Amazon / Make / Meta), and 130 questions across the 7 types (Amazon 88, Make 21, Meta 21). The grading model is now llama-3.3-70b, there is a read-only demo account for viewers, and the repo is public. The three insights below are the July 2026 judgments, kept as history, with later developments noted at the end of each.
 
 This leads to three insights worth facing honestly:
 
@@ -31,7 +31,7 @@ This is not a guess, it is evidenced: after the example answers got longer, abou
 
 Every item in the Later phase (trial counting, Stripe, a privacy policy, moving OAuth to Production, Turnstile, removing the allowlist) only serves "opening it to other people". If the product's positioning is self-use until the interviews are over, the whole Later phase can be deleted openly, with maintenance cost near zero. If it is really going to be commercialized, the Later phase is an **indivisible atomic package**: the wrong order of opening the door before adding the lock already cost one lesson in the Turnstile incident (see §E). The suggested decision point: **after the user has used it intensively for 2–4 weeks**. If even they do not use it daily, the commercialization case does not hold; if they cannot do without it, that is the best PMF signal.
 
-**2026-10 update**: a third path has appeared. Besides "self-use" and "commercialization" there is now "portfolio showcase": public code plus a read-only demo account for reviewers, so people can see the engineering judgment and product thinking without open registration. This path needs nothing from the commercialization package (it has no cost exposure: the demo account can make only 3 AI calls a day), so the commercialization decision point stays open, it is just no longer "choose or you get stuck with two options".
+**2026-10 update**: a third path has appeared. Besides "self-use" and "commercialization" there is now "portfolio showcase": public code plus a read-only demo account for viewers, so people can see the engineering judgment and product thinking without open registration. This path needs nothing from the commercialization package (it has no cost exposure: the demo account can make only 3 AI calls a day), so the commercialization decision point stays open, it is just no longer "choose or you get stuck with two options".
 
 ---
 
@@ -115,6 +115,6 @@ Question rotation, the 88-question bank, rubrics for 7 types, OTP hashing, the h
 - 2026-08: added Make as the second company (question bank, rubric, Company Knowledge, Resume Coach values framework)
 - 2026-09: Interview Rounds was first built as editable and then redone as a read-only view; the System Design Guide went through five iterations; the language-switch feature was removed
 - 2026-10-01: the grading model switched to llama-3.3-70b
-- 2026-10-01 to 02: the reviewer demo account (a separate sign-in, a route allowlist, a daily cap of 3 gradings), and a wider visible scope (Dashboard, the generic Interview Prep Guide (later extended to all three companies with a Company dropdown), the Salary Positioning example tool)
+- 2026-10-01 to 02: the viewer demo account (a separate sign-in, a route allowlist, a daily cap of 3 gradings), and a wider visible scope (Dashboard, the generic Interview Prep Guide (later extended to all three companies with a Company dropdown), the Salary Positioning example tool)
 - 2026-10-02: removed one company and added Meta
 - 2026-10-04: the pre-publication audit and personal-data cleanup, the tests moved to a dedicated identity, and the repo made public

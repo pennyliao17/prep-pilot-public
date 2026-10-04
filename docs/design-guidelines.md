@@ -91,7 +91,7 @@ Stories are added and managed in a single "Add a new story" block (company, titl
 
 - Primary button: green background, black text and border; on hover it shifts with a hard shadow (see §4); lower opacity when disabled.
 - Secondary button: white background, black border and text.
-- Text-link buttons (for example "Use a different email" or "Viewing as a reviewer?" on the sign-in card): muted underlined text with real vertical spacing above, never a stacked second button. If such a link is a child of a container that also styles its buttons as primary buttons, it must be explicitly excluded from that generic button hover rule (and given a base rule of equal or higher specificity), or it flashes a solid green block on hover.
+- Text-link buttons (for example "Use a different email" or "Sign in as a viewer instead?" on the sign-in card): muted underlined text with real vertical spacing above, never a stacked second button. If such a link is a child of a container that also styles its buttons as primary buttons, it must be explicitly excluded from that generic button hover rule (and given a base rule of equal or higher specificity), or it flashes a solid green block on hover.
 
 ### 6.2 Cards
 

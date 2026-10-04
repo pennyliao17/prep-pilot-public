@@ -18,14 +18,14 @@ function loadStoredCompany(): Company {
 	return "amazon";
 }
 
-// The demo/reviewer account's stand-in for Interview Rounds — see
+// The demo/viewer account's stand-in for Interview Rounds — see
 // demoInterviewGuideData.ts for why this is separate, static, sanitized
 // content rather than a reuse of InterviewRounds.tsx (which fetches the
 // real, personal DB-backed data). Deliberately does NOT call any
 // interview-rounds API — this page is 100% static plus the one interactive
 // Salary Positioning tool, which has its own separate, rate-limited backend
 // route. The tool section keeps a constant id across companies, so whatever
-// the reviewer typed into it survives switching the company dropdown.
+// the viewer typed into it survives switching the company dropdown.
 export default function DemoInterviewGuide() {
 	const [company, setCompany] = useState<Company>(loadStoredCompany);
 

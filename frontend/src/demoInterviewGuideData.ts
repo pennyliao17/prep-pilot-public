@@ -1,4 +1,4 @@
-// Static, hand-authored content for the demo/reviewer account's "Interview
+// Static, hand-authored content for the demo/viewer account's "Interview
 // Prep Guide" page — a sanitized, English-only stand-in for the real,
 // DB-backed Interview Rounds feature (see InterviewRounds.tsx), which the
 // demo account cannot reach because its real content is the owner's personal

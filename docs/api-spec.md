@@ -3,7 +3,7 @@
 This document defines the HTTP API contract between the frontend and the Cloudflare Worker.
 Every endpoint starts with `/api/...` and is deployed on Cloudflare Workers.
 
-**Since 2026-07-06 the API requires a real sign-in** (Google Sign-In or email one-time code, see "Authentication" below); it is no longer a shared single-user tool. Only one allowlisted email passes the access check after sign-in. Anyone else gets, from the relevant verification endpoint, the same 404 as for a route that does not exist. Since 2026-10 a scoped, read-mostly **reviewer demo session** also exists (see `POST /api/auth/demo`).
+**Since 2026-07-06 the API requires a real sign-in** (Google Sign-In or email one-time code, see "Authentication" below); it is no longer a shared single-user tool. Only one allowlisted email passes the access check after sign-in. Anyone else gets, from the relevant verification endpoint, the same 404 as for a route that does not exist. Since 2026-10 a scoped, read-mostly **viewer demo session** also exists (see `POST /api/auth/demo`).
 
 ---
 
@@ -81,7 +81,7 @@ Response (401, wrong or expired code): the standard error shape. After 5 wrong a
 
 ### `POST /api/auth/demo` (2026-10)
 
-Purpose: sign in to the scoped reviewer demo account. **No `Authorization` header.** Rate limited by IP (10 per 60 seconds).
+Purpose: sign in to the scoped viewer demo account. **No `Authorization` header.** Rate limited by IP (10 per 60 seconds).
 
 Request body:
 
@@ -280,7 +280,7 @@ Query parameters (optional):
 
 Implementation notes (`getUserAttemptHistory` in `worker/src/db.ts`, `buildTypeSummary` in `worker/src/index.ts`):
 
-- Returns only the signed-in user's own records (the `users.id` for `session.email`), always ordered by `created_at desc`. A reviewer demo session therefore sees only the demo account's own history.
+- Returns only the signed-in user's own records (the `users.id` for `session.email`), always ordered by `created_at desc`. A viewer demo session therefore sees only the demo account's own history.
 - `summary` is computed from the latest 200 records (`ATTEMPT_HISTORY_WINDOW`), not all history. This is a single-user tool and 200 is far above what accumulates in the short term, so pagination and date-range parameters are not implemented yet.
 - `overallScore` = the average of all subdimension scores in that attempt's `feedback.scores`, rounded to one decimal; always `null` for `resume_coach` mode or an attempt with no feedback yet.
 - `summary` only counts records with `mode = "single_question"` that have scores, grouped by `type`.
@@ -453,7 +453,7 @@ Response (200 OK example, `resume_coach` mode): `scores` / `strengths` / `improv
 }
 ```
 
-### `POST /api/salary-positioning` (2026-10, reviewer demo)
+### `POST /api/salary-positioning` (2026-10, viewer demo)
 
 Purpose: a stateless example tool. The user enters their current pay and living costs; an AI coach estimates what it would take to keep the same standard of living at an example location, and positions the ask within a **per-company estimated band** for the selected company and region (Europe: Amazon and Meta in London, Make in Prague; United States: Amazon and Meta at a major tech hub, Make via its parent Celonis in New York) read off public salary sites (levels.fyi, Glassdoor) in October 2026. The band is a rough estimate, never an offer or a company's real pay scale, and the prompt says so. The reply also reminds the user to cross-check levels.fyi and Numbeo. Nothing is written to the database.
 
