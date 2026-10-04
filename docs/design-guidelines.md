@@ -17,7 +17,7 @@ Goal: the interface is about "focusing on practice and reading feedback". The vi
 - Color (a fixed three-color system):
   - **Cream** (off-white background): around `#F0EEE9`, the base color of the whole page. Solid: **no gradient and no grain texture**.
   - **Ink** (black / dark ink): around `#1A1A1A`, for text, card borders, and doodle lines.
-  - **Green** (the accent, the only emphasis color): around `#8FD9A8` (`#4F9B63` for hover / darker states), for buttons, tags, and dropdown backgrounds.
+  - **Green** (the accent, the only emphasis color): around `#8FD9A8` (`#4F9B63` for hover / darker states), for buttons, tags, and the active page tab (dropdowns are no longer filled green; see §6.3).
   - Cards: white (`#FFFFFF`) with a thin black border (about 1.5px). **No shadow to fake a paper lift, and no rotation.**
 - Fonts:
   - Headings (`h1/h2/h3`, the logo wordmark): `"Fraunces"` (a serif with some personality, echoing the warmth of hand-drawn illustration)
@@ -101,6 +101,7 @@ Stories are added and managed in a single "Add a new story" block (company, titl
 ### 6.3 Dropdown
 
 - **Always use a custom component (a styled listbox), never the native `<select>`.** The option list of a native `<select>` is drawn by the operating system and CSS cannot style it; a custom component keeps the options white with a black border and the selected item in bold.
+- Dropdowns are quiet filters: a muted label next to a white outlined trigger, with no green fill, so they never read as a second row of tabs. Page navigation is a real tab strip (a baseline rule with the active tab in green, joined to the line).
 - The custom dropdown itself (the container wrapping the trigger button) must not rotate, for the same reason as §4: it wraps an interactive element.
 
 ### 6.4 Brand identity / logo

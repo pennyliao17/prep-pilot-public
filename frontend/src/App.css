@@ -70,7 +70,13 @@
 .practice-selectors {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 16px;
+	align-items: center;
+	gap: 12px 20px;
+	margin-bottom: 28px;
+}
+
+.practice-selectors > .dropdown {
+	margin-bottom: 0;
 }
 
 .dropdown {
@@ -81,17 +87,13 @@
 	font-size: 14px;
 	color: var(--ink-muted);
 	margin-bottom: 28px;
-	background: var(--green);
-	padding: 6px 14px;
-	border-radius: 6px;
-	border: 1.5px solid var(--ink);
 }
 
 .dropdown-trigger {
 	display: inline-flex;
 	align-items: center;
 	gap: 6px;
-	padding: 4px 10px;
+	padding: 6px 12px;
 	border: 1.5px solid var(--ink);
 	border-radius: 4px;
 	background: var(--card-bg);
@@ -140,24 +142,41 @@
 
 .page-tabs {
 	display: flex;
-	gap: 8px;
+	gap: 4px;
 	margin-bottom: 24px;
+	border-bottom: 1.5px solid var(--ink);
+	overflow-x: auto;
+	scrollbar-width: none;
+}
+
+.page-tabs::-webkit-scrollbar {
+	display: none;
 }
 
 .page-tab {
-	background: var(--card-bg);
+	background: transparent;
 	color: var(--ink-muted);
-	border: 1.5px solid var(--ink);
-	border-radius: 6px;
-	padding: 8px 16px;
+	border: 1.5px solid transparent;
+	border-bottom: none;
+	border-radius: 8px 8px 0 0;
+	padding: 9px 18px;
+	margin-bottom: -1.5px;
 	font-family: var(--font-body);
 	font-size: 14px;
 	font-weight: 600;
+	white-space: nowrap;
 }
 
-.page-tab--active {
+.page-tab:hover {
+	color: var(--ink);
+	background: rgba(143, 217, 168, 0.25);
+}
+
+.page-tab--active,
+.page-tab--active:hover {
 	background: var(--green);
 	color: var(--ink);
+	border-color: var(--ink);
 }
 
 .error {
@@ -1082,15 +1101,6 @@
 	50% {
 		transform: rotate(4deg);
 	}
-}
-
-.doodle--corner {
-	position: absolute;
-	top: -6px;
-	right: 8px;
-	width: 32px;
-	height: 32px;
-	opacity: 0.85;
 }
 
 /* ---------- Scroll reveal ---------- */
@@ -2356,6 +2366,78 @@
 
 @media (prefers-reduced-motion: reduce) {
 	.empty-state-doodle {
+		animation: none;
+	}
+}
+
+/* ---------- Practice page mascot ---------- */
+
+.practice-mascot {
+	width: 56px;
+	height: auto;
+	margin: 0 0 0 auto;
+	animation: mascot-bob 3.4s ease-in-out infinite;
+}
+
+.practice-mascot .bulb-eyes {
+	transform-box: fill-box;
+	transform-origin: center;
+	animation: mascot-blink 4.5s infinite;
+}
+
+.practice-mascot .bulb-rays {
+	animation: mascot-rays 1.8s ease-in-out infinite;
+}
+
+.practice-mascot.bulb-doodle--busy {
+	animation-duration: 0.7s;
+}
+
+.practice-mascot.bulb-doodle--busy .bulb-rays {
+	animation-duration: 0.5s;
+}
+
+@keyframes mascot-bob {
+	0%,
+	100% {
+		transform: translateY(0) rotate(-3deg);
+	}
+	50% {
+		transform: translateY(-6px) rotate(3deg);
+	}
+}
+
+@keyframes mascot-blink {
+	0%,
+	92%,
+	100% {
+		transform: scaleY(1);
+	}
+	96% {
+		transform: scaleY(0.1);
+	}
+}
+
+@keyframes mascot-rays {
+	0%,
+	100% {
+		opacity: 0.35;
+	}
+	50% {
+		opacity: 1;
+	}
+}
+
+@media (max-width: 600px) {
+	.practice-mascot {
+		display: none;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.practice-mascot,
+	.practice-mascot .bulb-eyes,
+	.practice-mascot .bulb-rays {
 		animation: none;
 	}
 }

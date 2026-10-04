@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getQuestions, postFeedback } from "./api";
 import { QUESTION_TYPES, QUESTION_TYPES_BY_COMPANY, COMPANIES, type Question, type QuestionType, type Company, type FeedbackResponse } from "./types";
-import { StarDoodle, SwirlDoodle } from "./Doodles";
+import { BulbDoodle, SwirlDoodle } from "./Doodles";
 import Reveal from "./Reveal";
 import Dropdown from "./Dropdown";
 import FeedbackDisplay from "./FeedbackDisplay";
@@ -213,6 +213,7 @@ function App() {
 							onChange={setType}
 							options={QUESTION_TYPES.filter((qt) => QUESTION_TYPES_BY_COMPANY[company].includes(qt.value))}
 						/>
+						<BulbDoodle busy={loading} className="practice-mascot" />
 					</div>
 
 					{error && <p className="error">{error}</p>}
@@ -221,7 +222,6 @@ function App() {
 						<Reveal className="question-panel">
 							{question ? (
 								<>
-									<StarDoodle className="doodle--corner" />
 									<span className="question-tag">{QUESTION_TYPES.find((qt) => qt.value === type)?.label ?? type}</span>
 									<h2>{question.title}</h2>
 									<p>{question.description}</p>
