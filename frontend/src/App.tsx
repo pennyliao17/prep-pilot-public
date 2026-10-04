@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { getQuestions, postFeedback } from "./api";
 import { QUESTION_TYPES, QUESTION_TYPES_BY_COMPANY, COMPANIES, type Question, type QuestionType, type Company, type FeedbackResponse } from "./types";
-import { BulbDoodle, SwirlDoodle } from "./Doodles";
+import { SwirlDoodle } from "./Doodles";
+import PageMascot from "./PageMascots";
 import Reveal from "./Reveal";
 import Dropdown from "./Dropdown";
 import FeedbackDisplay from "./FeedbackDisplay";
@@ -141,52 +142,55 @@ function App() {
 				</div>
 			</header>
 
-			<nav className="page-tabs">
-				<button
-					type="button"
-					className={`page-tab ${page === "practice" ? "page-tab--active" : ""}`}
-					onClick={() => setPage("practice")}
-				>
-					Practice
-				</button>
-				{!isDemo && (
+			<div className="page-tabs-bar">
+				<PageMascot page={page} busy={loading} />
+				<nav className="page-tabs">
 					<button
 						type="button"
-						className={`page-tab ${page === "resume_coach" ? "page-tab--active" : ""}`}
-						onClick={() => setPage("resume_coach")}
+						className={`page-tab ${page === "practice" ? "page-tab--active" : ""}`}
+						onClick={() => setPage("practice")}
 					>
-						Resume Coach
+						Practice
 					</button>
-				)}
-				<button
-					type="button"
-					className={`page-tab ${page === "dashboard" ? "page-tab--active" : ""}`}
-					onClick={() => setPage("dashboard")}
-				>
-					Dashboard
-				</button>
-				<button
-					type="button"
-					className={`page-tab ${page === "company_knowledge" ? "page-tab--active" : ""}`}
-					onClick={() => setPage("company_knowledge")}
-				>
-					Company Knowledge
-				</button>
-				<button
-					type="button"
-					className={`page-tab ${page === "interview_rounds" ? "page-tab--active" : ""}`}
-					onClick={() => setPage("interview_rounds")}
-				>
-					{isDemo ? "Interview Prep Guide" : "Interview Rounds"}
-				</button>
-				<button
-					type="button"
-					className={`page-tab ${page === "system_design_guide" ? "page-tab--active" : ""}`}
-					onClick={() => setPage("system_design_guide")}
-				>
-					System Design Guide
-				</button>
-			</nav>
+					{!isDemo && (
+						<button
+							type="button"
+							className={`page-tab ${page === "resume_coach" ? "page-tab--active" : ""}`}
+							onClick={() => setPage("resume_coach")}
+						>
+							Resume Coach
+						</button>
+					)}
+					<button
+						type="button"
+						className={`page-tab ${page === "dashboard" ? "page-tab--active" : ""}`}
+						onClick={() => setPage("dashboard")}
+					>
+						Dashboard
+					</button>
+					<button
+						type="button"
+						className={`page-tab ${page === "company_knowledge" ? "page-tab--active" : ""}`}
+						onClick={() => setPage("company_knowledge")}
+					>
+						Company Knowledge
+					</button>
+					<button
+						type="button"
+						className={`page-tab ${page === "interview_rounds" ? "page-tab--active" : ""}`}
+						onClick={() => setPage("interview_rounds")}
+					>
+						{isDemo ? "Interview Prep Guide" : "Interview Rounds"}
+					</button>
+					<button
+						type="button"
+						className={`page-tab ${page === "system_design_guide" ? "page-tab--active" : ""}`}
+						onClick={() => setPage("system_design_guide")}
+					>
+						System Design Guide
+					</button>
+				</nav>
+			</div>
 
 			{page === "resume_coach" ? (
 				<ResumeCoach />
@@ -213,7 +217,6 @@ function App() {
 							onChange={setType}
 							options={QUESTION_TYPES.filter((qt) => QUESTION_TYPES_BY_COMPANY[company].includes(qt.value))}
 						/>
-						<BulbDoodle busy={loading} className="practice-mascot" />
 					</div>
 
 					{error && <p className="error">{error}</p>}

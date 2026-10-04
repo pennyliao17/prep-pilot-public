@@ -1,7 +1,7 @@
 .page {
 	max-width: 1100px;
 	margin: 0 auto;
-	padding: 32px 20px 56px;
+	padding: 24px 20px 40px;
 	position: relative;
 }
 
@@ -12,7 +12,7 @@
 	flex-wrap: wrap;
 	align-items: center;
 	gap: 12px 16px;
-	margin-bottom: 12px;
+	margin-bottom: 8px;
 }
 
 .topbar h1 {
@@ -72,7 +72,7 @@
 	flex-wrap: wrap;
 	align-items: center;
 	gap: 12px 20px;
-	margin-bottom: 28px;
+	margin-bottom: 16px;
 }
 
 .practice-selectors > .dropdown {
@@ -80,13 +80,17 @@
 }
 
 .dropdown {
-	position: relative;
 	display: inline-flex;
 	align-items: center;
 	gap: 8px;
 	font-size: 14px;
 	color: var(--ink-muted);
-	margin-bottom: 28px;
+	margin-bottom: 16px;
+}
+
+.dropdown-control {
+	position: relative;
+	display: inline-flex;
 }
 
 .dropdown-trigger {
@@ -115,7 +119,9 @@
 	list-style: none;
 	margin: 0;
 	padding: 6px;
-	min-width: 220px;
+	min-width: 100%;
+	width: max-content;
+	max-width: 80vw;
 	background: var(--card-bg);
 	border: 1.5px solid var(--ink);
 	border-radius: 6px;
@@ -123,6 +129,10 @@
 }
 
 .dropdown-option {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
 	padding: 8px 12px;
 	border-radius: 4px;
 	font-family: var(--font-body);
@@ -136,6 +146,18 @@
 
 .dropdown-option--selected {
 	font-weight: 700;
+	background: rgba(143, 217, 168, 0.3);
+}
+
+.dropdown-check {
+	color: var(--green-dark);
+	font-size: 13px;
+}
+
+.dropdown-trigger:focus-visible,
+.page-tab:focus-visible {
+	outline: 2px solid var(--ink);
+	outline-offset: 2px;
 }
 
 /* ---------- Page tabs ---------- */
@@ -143,7 +165,6 @@
 .page-tabs {
 	display: flex;
 	gap: 4px;
-	margin-bottom: 24px;
 	border-bottom: 1.5px solid var(--ink);
 	overflow-x: auto;
 	scrollbar-width: none;
@@ -2338,7 +2359,7 @@
 	flex-direction: column;
 	align-items: center;
 	gap: 12px;
-	padding: 40px 16px 56px;
+	padding: 24px 16px 32px;
 	text-align: center;
 }
 
@@ -2370,31 +2391,30 @@
 	}
 }
 
-/* ---------- Practice page mascot ---------- */
+/* ---------- Page mascots (one small animated character per page, standing on the tab strip) ---------- */
 
-.practice-mascot {
-	width: 56px;
-	height: auto;
-	margin: 0 0 0 auto;
+.page-tabs-bar {
+	position: relative;
+	margin-bottom: 20px;
+}
+
+.page-mascot {
+	position: absolute;
+	right: 6px;
+	bottom: 2px;
+	width: 46px;
+	height: 46px;
+	pointer-events: none;
+	transform-origin: 50% 100%;
 	animation: mascot-bob 3.4s ease-in-out infinite;
 }
 
-.practice-mascot .bulb-eyes {
+.page-mascot * {
 	transform-box: fill-box;
-	transform-origin: center;
-	animation: mascot-blink 4.5s infinite;
 }
 
-.practice-mascot .bulb-rays {
-	animation: mascot-rays 1.8s ease-in-out infinite;
-}
-
-.practice-mascot.bulb-doodle--busy {
+.page-mascot--busy {
 	animation-duration: 0.7s;
-}
-
-.practice-mascot.bulb-doodle--busy .bulb-rays {
-	animation-duration: 0.5s;
 }
 
 @keyframes mascot-bob {
@@ -2403,7 +2423,7 @@
 		transform: translateY(0) rotate(-3deg);
 	}
 	50% {
-		transform: translateY(-6px) rotate(3deg);
+		transform: translateY(-4px) rotate(3deg);
 	}
 }
 
@@ -2418,26 +2438,170 @@
 	}
 }
 
-@keyframes mascot-rays {
+.page-mascot .mascot-eyes {
+	transform-origin: center;
+	animation: mascot-blink 4.5s infinite;
+}
+
+/* Practice: pulsing rays */
+.page-mascot .mascot-rays {
+	animation: mascot-pulse 1.8s ease-in-out infinite;
+}
+
+.page-mascot--busy .mascot-rays {
+	animation-duration: 0.5s;
+}
+
+@keyframes mascot-pulse {
 	0%,
 	100% {
-		opacity: 0.35;
+		opacity: 0.3;
 	}
 	50% {
 		opacity: 1;
 	}
 }
 
-@media (max-width: 600px) {
-	.practice-mascot {
+/* Resume Coach: the check mark draws itself */
+.page-mascot .mascot-check {
+	stroke-dasharray: 24;
+	animation: mascot-draw 3s ease-in-out infinite;
+}
+
+@keyframes mascot-draw {
+	0% {
+		stroke-dashoffset: 24;
+	}
+	35%,
+	85% {
+		stroke-dashoffset: 0;
+	}
+	100% {
+		stroke-dashoffset: 24;
+	}
+}
+
+/* Dashboard: bars grow and settle */
+.page-mascot .mascot-bar {
+	transform-origin: 50% 100%;
+	animation: mascot-grow 2.8s ease-in-out infinite;
+}
+
+.page-mascot .mascot-bar--2 {
+	animation-delay: 0.2s;
+}
+
+.page-mascot .mascot-bar--3 {
+	animation-delay: 0.4s;
+}
+
+@keyframes mascot-grow {
+	0%,
+	100% {
+		transform: scaleY(0.7);
+	}
+	50% {
+		transform: scaleY(1);
+	}
+}
+
+/* Company Knowledge: waving flag and twinkling windows */
+.page-mascot .mascot-flag {
+	transform-origin: 0% 50%;
+	animation: mascot-wave 1.4s ease-in-out infinite;
+}
+
+@keyframes mascot-wave {
+	0%,
+	100% {
+		transform: skewY(0deg) scaleX(1);
+	}
+	50% {
+		transform: skewY(-10deg) scaleX(0.8);
+	}
+}
+
+.page-mascot .mascot-window {
+	animation: mascot-twinkle 2.4s ease-in-out infinite;
+}
+
+.page-mascot .mascot-window--1 {
+	animation-delay: 0.8s;
+}
+
+.page-mascot .mascot-window--2 {
+	animation-delay: 1.6s;
+}
+
+@keyframes mascot-twinkle {
+	0%,
+	100% {
+		fill-opacity: 1;
+	}
+	50% {
+		fill-opacity: 0.2;
+	}
+}
+
+/* Interview Prep Guide / Interview Rounds: typing dots */
+.page-mascot .mascot-dot {
+	animation: mascot-type 1.2s ease-in-out infinite;
+}
+
+.page-mascot .mascot-dot--2 {
+	animation-delay: 0.2s;
+}
+
+.page-mascot .mascot-dot--3 {
+	animation-delay: 0.4s;
+}
+
+@keyframes mascot-type {
+	0%,
+	100% {
+		transform: translateY(0);
+		opacity: 0.4;
+	}
+	40% {
+		transform: translateY(-3px);
+		opacity: 1;
+	}
+}
+
+/* System Design Guide: nodes light up in turn */
+.page-mascot .mascot-node {
+	transform-origin: center;
+	animation: mascot-node 2.4s ease-in-out infinite;
+}
+
+.page-mascot .mascot-node--2 {
+	animation-delay: 0.8s;
+}
+
+.page-mascot .mascot-node--3 {
+	animation-delay: 1.6s;
+}
+
+@keyframes mascot-node {
+	0%,
+	70%,
+	100% {
+		transform: scale(1);
+	}
+	35% {
+		transform: scale(1.12);
+	}
+}
+
+@media (max-width: 760px) {
+	.page-mascot {
 		display: none;
 	}
 }
 
 @media (prefers-reduced-motion: reduce) {
-	.practice-mascot,
-	.practice-mascot .bulb-eyes,
-	.practice-mascot .bulb-rays {
-		animation: none;
+	.page-mascot,
+	.page-mascot * {
+		animation: none !important;
 	}
 }

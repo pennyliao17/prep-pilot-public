@@ -41,36 +41,43 @@ export default function Dropdown<T extends string>({ value, options, onChange, l
 	return (
 		<div className="dropdown" ref={rootRef}>
 			<span className="dropdown-label">{label}</span>
-			<button
-				type="button"
-				className="dropdown-trigger"
-				aria-haspopup="listbox"
-				aria-expanded={open}
-				onClick={() => setOpen((o) => !o)}
-			>
-				{selected?.label}
-				<span className="dropdown-chevron" aria-hidden="true">
-					▾
-				</span>
-			</button>
-			{open && (
-				<ul className="dropdown-list" role="listbox">
-					{options.map((o) => (
-						<li
-							key={o.value}
-							role="option"
-							aria-selected={o.value === value}
-							className={`dropdown-option ${o.value === value ? "dropdown-option--selected" : ""}`}
-							onClick={() => {
-								onChange(o.value);
-								setOpen(false);
-							}}
-						>
-							{o.label}
-						</li>
-					))}
-				</ul>
-			)}
+			<div className="dropdown-control">
+				<button
+					type="button"
+					className="dropdown-trigger"
+					aria-haspopup="listbox"
+					aria-expanded={open}
+					onClick={() => setOpen((o) => !o)}
+				>
+					{selected?.label}
+					<span className="dropdown-chevron" aria-hidden="true">
+						▾
+					</span>
+				</button>
+				{open && (
+					<ul className="dropdown-list" role="listbox">
+						{options.map((o) => (
+							<li
+								key={o.value}
+								role="option"
+								aria-selected={o.value === value}
+								className={`dropdown-option ${o.value === value ? "dropdown-option--selected" : ""}`}
+								onClick={() => {
+									onChange(o.value);
+									setOpen(false);
+								}}
+							>
+								{o.label}
+								{o.value === value && (
+									<span className="dropdown-check" aria-hidden="true">
+										✓
+									</span>
+								)}
+							</li>
+						))}
+					</ul>
+				)}
+			</div>
 		</div>
 	);
 }

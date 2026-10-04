@@ -47,29 +47,3 @@ export function NotebookDoodle({ className = "" }: { className?: string }) {
 		</svg>
 	);
 }
-
-// A little lightbulb with a face for the Practice page. It bobs and blinks while idle
-// and bounces faster while the AI is scoring an answer (`busy`).
-export function BulbDoodle({ busy = false, className = "" }: { busy?: boolean; className?: string }) {
-	return (
-		<svg className={`bulb-doodle ${busy ? "bulb-doodle--busy" : ""} ${className}`} viewBox="0 0 90 100" aria-hidden="true">
-			<path d="M45 4 V12 M14 20 L20 25 M76 20 L70 25 M6 48 H14 M76 48 H84" stroke="var(--ink)" strokeWidth="2.2" strokeLinecap="round" className="bulb-rays" />
-			<path
-				d="M45 14 C27 14 17 27 17 41 C17 52 23 58 28 64 C31 67 32 70 32 74 H58 C58 70 59 67 62 64 C67 58 73 52 73 41 C73 27 63 14 45 14 Z"
-				fill="var(--green)"
-				stroke="var(--ink)"
-				strokeWidth="2.4"
-				strokeLinejoin="round"
-			/>
-			<rect x="33" y="74" width="24" height="7" rx="3" fill="var(--card-bg)" stroke="var(--ink)" strokeWidth="2.2" />
-			<rect x="36" y="81" width="18" height="6" rx="3" fill="var(--card-bg)" stroke="var(--ink)" strokeWidth="2.2" />
-			<g className="bulb-eyes">
-				<circle cx="36" cy="42" r="3.4" fill="var(--ink)" />
-				<circle cx="54" cy="42" r="3.4" fill="var(--ink)" />
-			</g>
-			<circle cx="29" cy="52" r="4.5" fill="var(--card-bg)" opacity="0.7" />
-			<circle cx="61" cy="52" r="4.5" fill="var(--card-bg)" opacity="0.7" />
-			<path d="M39 52 Q45 59 51 52" fill="none" stroke="var(--ink)" strokeWidth="2.2" strokeLinecap="round" />
-		</svg>
-	);
-}
