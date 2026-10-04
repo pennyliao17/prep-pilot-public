@@ -1,0 +1,451 @@
+{
+  "meta": {
+    "company": "make",
+    "notes": [
+      "Make (make.com, formerly Integromat, founded in Prague and acquired by Celonis in 2020) has not published a fixed numbered list of 'Leadership Principles' the way Amazon has. The 'leadership_principles_behavioral' dimension below is instead built around recurring themes in how Make publicly describes its mission and product philosophy (see worker/src/prompts.ts's MAKE_VALUES and its source comments) — candidates should be evaluated on whether their story genuinely demonstrates one of these themes, not on reciting an official slogan.",
+      "1 = very weak / almost no evidence; 3 = moderate / acceptable; 5 = very strong / model answer.",
+      "Feedback tone: strict but constructive, like a coach who genuinely wants you to get the offer."
+    ]
+  },
+  "dimensions": {
+    "product_sense": {
+      "name": "Product Sense / Product Design",
+      "question_examples": [
+        "Design a way for a non-technical Make user to understand why a complex scenario with 10+ modules failed silently.",
+        "How would you improve the experience of discovering the right modules/apps when someone is building their first scenario?"
+      ],
+      "subdimensions": {
+        "clarity_and_structure": {
+          "description": "Whether the answer has clear assumptions, a game plan, and a clearly segmented structure (framing how they'll break down the problem up front, rather than jumping straight to a solution).",
+          "good_signals": [
+            "Opens by restating the problem, clarifying goals and constraints, and making explicit assumptions where needed.",
+            "States their process up front, e.g.: user first, then pain points, then solution + metrics.",
+            "Every paragraph has a clear topic sentence with natural transitions."
+          ],
+          "bad_signals": [
+            "Jumps straight into listing solutions or features with no framing at all.",
+            "Rambles with no paragraph structure, reads like stream of consciousness.",
+            "Never signals which part of the answer they're currently in (e.g. user, problem, solution)."
+          ],
+          "scoring_guide": {
+            "1": "No structure at all — the answer is scattered and hard to follow.",
+            "3": "Has basic structure but inconsistent — some sections are clear, others jump around.",
+            "5": "Clearly structured throughout, like walking the interviewer through a design process step by step."
+          }
+        },
+        "customer_obsession_and_motivation": {
+          "description": "Whether the answer explains why this product/problem matters starting from the user — for Make, specifically the non-technical 'creator' building a workflow themselves rather than waiting on engineering, which is the core of how Make describes its own mission ('empower creators to innovate without limits').",
+          "good_signals": [
+            "Clearly describes the situation, skill level, and pain points of a specific type of Make user (e.g. an ops person automating a manual process, a solo founder, an agency building for clients) rather than a generic 'users'.",
+            "Connects concrete behavior and frustration with framing like 'If I were this creator staring at a failed scenario, what I'd need most is...'.",
+            "Ties back to Make's positioning as more powerful than a pure no-code tool but more accessible than writing code — the answer respects that the user isn't a developer."
+          ],
+          "bad_signals": [
+            "Starts purely from a technical/engineering angle with no discussion of the non-technical creator's experience at all.",
+            "Uses vague language like 'make it easier' without defining what's actually hard today.",
+            "Assumes the user has the same mental model as someone who builds the platform itself."
+          ],
+          "scoring_guide": {
+            "1": "Barely mentions the user, or only in very generic terms.",
+            "3": "Has basic user framing but not concrete or situational enough.",
+            "5": "Genuinely feels like they understand a specific type of Make creator's workflow and concrete frustrations."
+          }
+        },
+        "segmentation_and_focus": {
+          "description": "Whether users/use cases are reasonably segmented, and whether the candidate picks one clear focus to go deep on — relevant for Make since its user base spans solo no-code beginners, power users doing complex multi-branch scenarios, and enterprise teams on Make ONE.",
+          "good_signals": [
+            "Lists several possible user segments (e.g. first-time creator, power user, agency, enterprise admin) and explains why their needs differ.",
+            "Clearly picks one primary segment and explains why (impact, fit, underserved).",
+            "All subsequent problem framing and solutioning stays aimed at that segment, without drifting to others."
+          ],
+          "bad_signals": [
+            "The whole answer talks about 'all Make users' with no real focus.",
+            "Segments are defined too superficially (e.g. only by plan tier) without connecting to skill level and motivation.",
+            "Keeps switching the target audience mid-answer, so the story falls apart."
+          ],
+          "scoring_guide": {
+            "1": "No segmentation at all — fully one-size-fits-all.",
+            "3": "Some segmentation attempted but unclear, or the reasoning for the chosen focus is weak.",
+            "5": "Segments are clear and mutually exclusive, and the answer stays consistently focused on the chosen one."
+          }
+        },
+        "problem_identification": {
+          "description": "Whether the candidate genuinely understands and concretely describes the user's problem to solve, rather than jumping straight to a feature.",
+          "good_signals": [
+            "Describes the pain point with a concrete scenario, e.g. exactly where in the scenario-building or debugging flow a creator gets stuck.",
+            "Distinguishes between a 'want/wish' and an actual 'blocker' (e.g. 'more integrations' vs. 'can't tell which module in a 15-step scenario failed').",
+            "Connects the problem to its impact (e.g. abandoned scenario builds, support tickets, churn before upgrading from free)."
+          ],
+          "bad_signals": [
+            "Treats a feature request as the problem itself, e.g. 'there's no debugging panel, so we need one'.",
+            "Describes the problem too abstractly to imagine happening to a real creator.",
+            "Lists a pile of problems with no prioritization."
+          ],
+          "scoring_guide": {
+            "1": "Doesn't show what specific problem is actually being solved.",
+            "3": "Lists a few reasonable problems, but not deep enough or unprioritized.",
+            "5": "Problem is concrete and prioritized, and directly drives the design decisions that follow."
+          }
+        },
+        "solution_quality_and_tradeoffs": {
+          "description": "Whether the proposed solution has enough depth, a clearly scoped v1, and trade-offs that fit Make's visual-first, accessible-but-powerful product philosophy.",
+          "good_signals": [
+            "States the high-level solution direction first, then breaks it into a few key experience/feature modules.",
+            "Clearly defines v1 vs. future extensions, showing judgment about what to ship first.",
+            "Calls out risks and downsides (e.g. adding a feature that makes the visual canvas more cluttered), and explains how to mitigate them."
+          ],
+          "bad_signals": [
+            "Throws out ideas like a feature list with no connection or prioritization.",
+            "v1 tries to do too much, unrealistic given resources and time-to-value.",
+            "Never mentions any risk, failure mode, or constraint — e.g. ignores that added complexity could hurt the platform's core promise of accessibility."
+          ],
+          "scoring_guide": {
+            "1": "Solution is scattered or clearly unrealistic.",
+            "3": "Has a roughly reasonable direction, but v1 scope / trade-offs are unclear.",
+            "5": "Proposes a convincing, practical v1 and clearly explains why it's designed that way."
+          }
+        }
+      }
+    },
+    "analytical_execution": {
+      "name": "Analytical / Execution / Metrics",
+      "question_examples": [
+        "Make's activation metric is roughly 'ran a scenario successfully for the first time.' How would you improve it?",
+        "A cohort of free-trial users is churning before upgrading to a paid plan. How would you investigate why?"
+      ],
+      "subdimensions": {
+        "goal_definition": {
+          "description": "Whether the candidate clearly defines what goal or success state the problem is meant to achieve.",
+          "good_signals": [
+            "Clearly distinguishes input vs. output metrics.",
+            "Asks up front, 'What are we actually trying to optimize for — activation, retention, expansion revenue?'.",
+            "Connects back to Make's business model: a freemium, credit/operations-based platform where usage growth and plan upgrades both matter."
+          ],
+          "bad_signals": [
+            "Jumps straight into listing KPIs without explaining why they're the right ones.",
+            "Fixates on a single metric with no consideration of balance or side effects.",
+            "Never addresses the relationship between activation and longer-term retention/expansion."
+          ]
+        },
+        "metric_selection_and_reasoning": {
+          "description": "Which metrics are chosen, why, and whether there are guardrail metrics.",
+          "good_signals": [
+            "Proposes 1-2 north star metrics paired with 3-5 supporting/guardrail metrics.",
+            "Explains what creator behavior each metric represents (e.g. scenarios published, modules connected, error rate on active scenarios).",
+            "Considers trade-offs, e.g. encouraging more scenario creation vs. keeping operations/credit usage sustainable for the user."
+          ],
+          "bad_signals": [
+            "Piles on metrics arbitrarily with no prioritization.",
+            "Chosen metrics aren't actually measurable or aren't related to the problem.",
+            "Forgets qualitative/behavioral metrics related to whether the automation actually works reliably."
+          ]
+        },
+        "structured_debugging_and_hypotheses": {
+          "description": "When facing an anomalous metric, whether the candidate systematically hypothesizes causes and designs ways to validate them.",
+          "good_signals": [
+            "First distinguishes whether this is a tracking issue vs. a real behavior change.",
+            "Hypothesizes in layers (onboarding friction / pricing confusion / missing an integration they need / a competitor).",
+            "Proposes concrete experiments or analysis methods to validate (funnel breakdown, cohort analysis, user interviews with churned trial users)."
+          ],
+          "bad_signals": [
+            "Guesses at causes purely on intuition with no systematic breakdown.",
+            "Forgets to rule out instrumentation/logging errors.",
+            "Never proposes any concrete way to validate a hypothesis."
+          ]
+        },
+        "prioritization_and_tradeoffs": {
+          "description": "Given multiple possible solutions or experiments, whether there's a clear prioritization.",
+          "good_signals": [
+            "Prioritizes using an impact vs. effort/risk framing.",
+            "Accounts for resource constraints rather than greedily trying to do everything at once.",
+            "Explains why a given experiment goes first, and what the next step is if it fails."
+          ],
+          "bad_signals": [
+            "Treats every idea as equally high priority.",
+            "Doesn't consider execution cost or technical risk.",
+            "Picks their favorite idea with no clear reasoning."
+          ]
+        }
+      }
+    },
+    "leadership_principles_behavioral": {
+      "name": "Leadership Principles / Behavioral",
+      "question_examples": [
+        "Tell me about a time you built something that let a non-technical person solve their own problem without waiting on engineering.",
+        "Describe a time you simplified something complex for a user without dumbing it down or removing real power."
+      ],
+      "subdimensions": {
+        "story_structure_star": {
+          "description": "Whether the story is told clearly using a STAR / STAR+ structure, rather than a rambling description.",
+          "good_signals": [
+            "Clearly states Situation / Task / Action / Result, ideally with a Reflection as well.",
+            "Every part has a clear timeline and clearly defined roles.",
+            "The result is concrete, with numbers or an observable change."
+          ],
+          "bad_signals": [
+            "Everything is blended together — unclear what the problem was, what they did, and what the result was.",
+            "The result is vague, e.g. 'everyone was happy' with no concrete evidence.",
+            "The story is too short or shallow, like routine day-to-day work."
+          ]
+        },
+        "ownership_and_decision_making": {
+          "description": "Whether the candidate shows accountability for outcomes and proactively elevated their perspective to make decisions, rather than just executing instructions.",
+          "good_signals": [
+            "Clearly states they proactively identified the problem or proposed the solution, rather than being assigned it.",
+            "Explains their own role in the key decision, including the risk and consequences they owned.",
+            "Pushed back / exercised influence when facing resistance, rather than passively accepting it."
+          ],
+          "bad_signals": [
+            "The whole story sounds like they were just following someone else's plan.",
+            "Blames the problem or failure entirely on other people or circumstances.",
+            "No evidence of long-term thinking anywhere in the story."
+          ]
+        },
+        "alignment_with_specific_lp": {
+          "description": "Whether the story actually demonstrates a specific Make theme (e.g. Creator Empowerment, Radical Simplicity, Practical Power — see worker/src/prompts.ts's MAKE_VALUES), rather than just claiming 'this shows X'.",
+          "good_signals": [
+            "The action details themselves show the theme in practice, e.g. for Radical Simplicity, concretely describing how they hid complexity from an end user without removing capability.",
+            "Connects to the spirit of the theme, rather than just reciting a label.",
+            "Reiterates the lesson learned in the result or reflection section."
+          ],
+          "bad_signals": [
+            "Only says 'this is empowerment' at the start or end of the story, with no evidence in the middle.",
+            "Crams in too many themes at once, so each one is weakly supported.",
+            "The story content actually contradicts the claimed theme, e.g. claiming Radical Simplicity while the whole story is about adding more configuration options."
+          ]
+        },
+        "reflection_and_learning": {
+          "description": "Whether there's genuine reflection on the experience, and an explanation of how behavior changed afterward.",
+          "good_signals": [
+            "Admits there were things they could have done better, not afraid to name a real misstep.",
+            "States a concrete, observable behavior change (e.g. how they'd design the escape hatch for power users earlier next time).",
+            "Ties the reflection back to a broader lesson about building for non-technical users, or career growth."
+          ],
+          "bad_signals": [
+            "The 'lesson learned' is vague, e.g. 'communicate more'.",
+            "No reflection at all — just showcasing success.",
+            "The reflection is unrelated to the actual story."
+          ]
+        }
+      }
+    },
+    "strategy_business": {
+      "name": "Strategy / Business Thinking",
+      "question_examples": [
+        "Zapier has a much larger app ecosystem and a more polished UX; n8n is open-source, self-hostable, and developer-loved. How should Make differentiate and win?",
+        "Should Make prioritize going further upmarket to compete with Workato and Tray.ai in the enterprise segment, or stay focused on the prosumer/SMB middle tier?"
+      ],
+      "subdimensions": {
+        "structured_market_and_customer_analysis": {
+          "description": "Whether market, competition, and customers are analyzed in a structured way, rather than just a pile of buzzwords.",
+          "good_signals": [
+            "Starts by roughly scoping the market (TAM/SAM/SOM is fine at a rough level) across the iPaaS/automation space.",
+            "Clearly describes the differences and needs across target customer groups (solo/prosumer, SMB, mid-market, enterprise).",
+            "Identifies key competitors/alternatives (Zapier, n8n, Workato, Tray.ai, Microsoft Power Automate) and Make's relative strengths and weaknesses."
+          ],
+          "bad_signals": [
+            "Just says the market is big or growing fast, with no structure at all.",
+            "Ignores Make's existing capabilities and position, as if this were a brand-new startup with no users.",
+            "Recites business-school frameworks with no real connection to Make's actual context."
+          ]
+        },
+        "make_ecosystem_and_platform_fit": {
+          "description": "Whether the strategy accounts for how Make's own growth loop actually works: more integrations and shared templates let more non-technical creators solve more of their own problems, which drives more usage and community-built content, which attracts more app partners to build official integrations. Also whether it accounts for Make's position as a business unit within Celonis (process mining/execution management), which is a real, distinctive asset most pure-play automation competitors don't have.",
+          "good_signals": [
+            "Discusses how the strategy affects the integration count, template/community ecosystem, and ease of building a first working scenario.",
+            "Explains how this strategy reinforces (or is reinforced by) Make's relationship with Celonis, its EU-native infrastructure/data-residency positioning, or its AI Agents/MCP direction.",
+            "Considers the impact on third-party app partners and the creator community, not just end users."
+          ],
+          "bad_signals": [
+            "The strategy could apply to any automation company — nothing about Make's specific position (mid-tier between Zapier's ease and code-first tools, Celonis-owned, EU-native) is addressed.",
+            "Ignores the ecosystem/partner side entirely, only talks about end users.",
+            "Only discusses short-term revenue, no consideration of long-term platform trust and the creator community."
+          ]
+        },
+        "prioritization_and_roadmapping": {
+          "description": "Whether the strategy can be broken down into an actionable roadmap with a clear sequence.",
+          "good_signals": [
+            "Proposes 2-3 main strategic directions, each broken into milestones or initiatives.",
+            "Accounts for resource constraints and risk, clearly stating what comes first and what comes later.",
+            "Describes how each strategic direction's success would be tracked with metrics."
+          ],
+          "bad_signals": [
+            "Stays very high-level with no concrete execution steps at all.",
+            "The 'roadmap' is just a timeline with no real strategic thread connecting it.",
+            "Ignores risks and dependencies."
+          ]
+        }
+      }
+    },
+    "estimation": {
+      "name": "Estimation / Guesstimate",
+      "question_examples": [
+        "Estimate how many scenarios are actively running (scheduled or triggered) on Make's platform at any given moment.",
+        "Estimate how many of Make's active users build at least one scenario that uses an AI module (OpenAI/Claude/Gemini) within their first month."
+      ],
+      "subdimensions": {
+        "assumption_clarity": {
+          "description": "Whether every assumption made is clearly stated, and whether the candidate checks that it's reasonable.",
+          "good_signals": [
+            "States the key assumptions (active user count, scenarios per user, run frequency, etc.) before calculating.",
+            "Assumptions are logically consistent with each other, not contradictory.",
+            "Willing to adjust an assumption when needed, and explains why."
+          ],
+          "bad_signals": [
+            "Throws out numbers with no stated source.",
+            "Realizes partway through that an earlier assumption was wrong, but doesn't fix it.",
+            "An assumption is clearly unreasonable (e.g. every free user runs 10,000 scenario executions a day)."
+          ]
+        },
+        "problem_breakdown_and_math": {
+          "description": "Whether the problem is reasonably broken down and the math comes out roughly correct.",
+          "good_signals": [
+            "Breaks the big problem into a few dimensions (active users x scenarios per user x runs per scenario per day, etc.).",
+            "The calculation process is orderly and clearly narrated out loud.",
+            "Sanity-checks the final result to see if it looks reasonable."
+          ],
+          "bad_signals": [
+            "The breakdown is disorganized or double-counts the same group of users.",
+            "Gets lost partway through without reorganizing the steps.",
+            "No sanity check at all."
+          ]
+        },
+        "communication_and_poise": {
+          "description": "Whether the candidate stays calm and clear while estimating out loud, and how they handle uncertainty.",
+          "good_signals": [
+            "Narrates their thinking while calculating, so the interviewer can follow along.",
+            "When uncertain, is willing to say 'there are two ways to break this down, I'll go with this one first'.",
+            "Doesn't get thrown off entirely by a small mistake."
+          ],
+          "bad_signals": [
+            "Panics the moment a calculation error is noticed, and the whole answer falls apart.",
+            "Never verbalizes their thought process, so it's unclear how they're thinking.",
+            "Obsesses over precise decimal points, losing sight of the big picture."
+          ]
+        }
+      }
+    },
+    "system_design": {
+      "name": "System Design / TPM",
+      "question_examples": [
+        "Design the execution engine that reliably runs millions of scheduled/triggered automation scenarios, including retry and error handling.",
+        "Design how a Make AI Agent could safely modify a running scenario without breaking other scenarios that depend on it."
+      ],
+      "subdimensions": {
+        "requirements_and_scoping": {
+          "description": "Whether the candidate clarifies functional and non-functional requirements (scale, latency, consistency, who the users are) before proposing a design, rather than designing in a vacuum.",
+          "good_signals": [
+            "Asks about scale (scenarios/day, concurrent executions), latency expectations, and consistency needs up front.",
+            "Clarifies which use cases are in scope for v1 vs later (e.g. simple linear scenarios vs. complex router/iterator branching).",
+            "States explicit assumptions when the interviewer doesn't provide a number."
+          ],
+          "bad_signals": [
+            "Jumps straight into naming technologies/components with no sense of scale or constraints.",
+            "Never distinguishes must-have requirements from nice-to-haves.",
+            "Ignores who actually uses the system and why (non-technical creators depending on scenarios running unattended in production)."
+          ]
+        },
+        "high_level_architecture": {
+          "description": "Whether the candidate proposes a clear, sensible breakdown of the system into major components and explains how data/requests flow between them.",
+          "good_signals": [
+            "Breaks the system into a small number of clear components (e.g. trigger/scheduler, execution engine, module connectors, error handling/retry queue) with a simple story for how they connect.",
+            "Explains the role of each component in plain language before naming any specific technology.",
+            "Keeps the design at the right altitude for a PM/TPM — enough structure to reason about trade-offs, not a line-by-line engineering spec."
+          ],
+          "bad_signals": [
+            "Describes components with no explanation of how they interact.",
+            "Gets lost in low-level implementation detail (specific algorithms, exact schemas) instead of the overall shape.",
+            "The design doesn't actually address the stated requirements."
+          ]
+        },
+        "scalability_and_tradeoffs": {
+          "description": "Whether the candidate identifies where the design would break under scale and reasons about real trade-offs (e.g. consistency vs. availability, cost vs. latency, build vs. buy).",
+          "good_signals": [
+            "Identifies the most likely bottleneck (e.g. a hot queue during a traffic spike, a slow third-party API a scenario depends on) and proposes a fix.",
+            "Explicitly names a trade-off and picks a side with a reason, rather than listing pros/cons with no decision.",
+            "Considers cost (Make's own credit/operations-based pricing model implies real infrastructure cost per execution) and engineering effort, not just theoretical scalability."
+          ],
+          "bad_signals": [
+            "Treats the system as if it will always run at small scale with no failure modes.",
+            "Lists trade-offs without ever committing to a recommendation.",
+            "Adds complexity without justifying why it's needed."
+          ]
+        },
+        "operational_and_cross_team_thinking": {
+          "description": "Whether the candidate addresses how the system would be monitored, rolled out safely, and delivered in practice — including working with engineering and other teams, which is central to the TPM angle of this question type.",
+          "good_signals": [
+            "Mentions how they'd monitor health (key metrics/alerts, e.g. scenario failure rate) and detect failures after launch.",
+            "Describes a staged rollout (e.g. internal dogfood, small percentage, then full launch) rather than a single big-bang release.",
+            "Talks about which teams (engineering, data, ops, and given Make's Prague-based product/eng org, potentially Celonis-side security/infra teams) need to be involved and where dependencies or risks lie."
+          ],
+          "bad_signals": [
+            "The design ends at launch with no mention of what happens operationally afterward.",
+            "No acknowledgment that other teams or dependencies exist.",
+            "Ignores failure handling entirely, as if the system will never go down."
+          ]
+        }
+      }
+    },
+    "ai_pm": {
+      "name": "AI Product Manager",
+      "question_examples": [
+        "Design the product experience for Make AI Agents — how would you help a non-technical creator go from a simple deterministic workflow to an adaptive AI agent without hitting a wall of complexity?",
+        "How would you decide when a scenario should offer an 'AI agent' step versus a simple deterministic module?"
+      ],
+      "subdimensions": {
+        "problem_ml_fit": {
+          "description": "Whether the candidate first establishes that the problem genuinely calls for an AI/agentic solution — and what that solution needs to be good at — rather than assuming AI is the answer by default, which matters a lot for Make given it offers both deterministic scenarios and AI Agents as distinct product surfaces.",
+          "good_signals": [
+            "Asks what a deterministic (non-agentic) scenario would look like and explains concretely why an adaptive AI agent does better here — e.g. the decision logic is too variable to hard-code as routers/filters.",
+            "Identifies what the agent actually needs to decide or generate, in plain language, before discussing models or architecture.",
+            "Considers user trust and explainability implications of handing decision-making to an AI agent inside a production automation."
+          ],
+          "bad_signals": [
+            "Assumes 'add an AI agent' is the answer without explaining what problem it solves better than a deterministic scenario.",
+            "Confuses the AI feature with the product goal, e.g. treats 'add an agent step' as the goal itself.",
+            "Never considers whether a simpler, faster-to-ship deterministic solution would work almost as well."
+          ]
+        },
+        "data_and_evaluation_strategy": {
+          "description": "Whether the candidate thinks concretely about what data/context the agent needs and how they would measure whether it's actually working, both offline and after launch.",
+          "good_signals": [
+            "Names the specific context/tools (e.g. via MCP, connected modules) the agent needs and where they'd realistically come from.",
+            "Proposes concrete offline metrics (e.g. task success rate on a benchmark set of scenarios) AND online/business metrics (e.g. scenario completion without human intervention), and explains why both matter.",
+            "Considers what 'good enough to ship' looks like, not just 'best possible agent'."
+          ],
+          "bad_signals": [
+            "Never mentions evaluation at all, as if the agent works perfectly out of the box.",
+            "Picks a single vague metric like 'accuracy' with no connection to the business or creator outcome.",
+            "Confuses model-quality metrics with product success metrics, or never distinguishes them."
+          ]
+        },
+        "responsible_ai_and_risk": {
+          "description": "Whether the candidate proactively considers failure modes, and safety risks the AI feature could introduce given it runs inside unattended production automations, and how to guard against them.",
+          "good_signals": [
+            "Names a concrete failure mode specific to this feature (e.g. an agent taking an unintended action against a connected app, like sending an email or deleting a record).",
+            "Proposes a concrete guardrail: scoped permissions per connected app, a human-in-the-loop approval step for high-risk actions, or a way to catch bad agent decisions before they reach a customer's real systems.",
+            "Considers creator trust and how a visible agent mistake in a production scenario would affect it."
+          ],
+          "bad_signals": [
+            "Treats the agent as if it will never make a wrong decision.",
+            "Mentions 'responsible AI' only as a buzzword with no concrete mechanism.",
+            "Ignores the specific risk profile of agentic automation acting on real connected business systems."
+          ]
+        },
+        "iteration_and_feedback_loops": {
+          "description": "Whether the candidate describes a realistic plan for launching, monitoring, and improving the AI feature over time, including how model drift and user feedback are handled.",
+          "good_signals": [
+            "Describes a staged launch (e.g. shadow mode, small percentage rollout, opt-in beta with the community) before a full launch.",
+            "Explains how they'd detect the agent degrading over time (drift, changing connected-app behavior) after launch.",
+            "Describes a concrete feedback loop, e.g. using creator corrections or explicit feedback to improve agent prompting/tooling."
+          ],
+          "bad_signals": [
+            "Treats the launch as the finish line with no plan for what happens after.",
+            "Never mentions how they'd know if the agent gets worse over time.",
+            "No mechanism for turning real-world usage back into agent improvement."
+          ]
+        }
+      }
+    }
+  }
+}

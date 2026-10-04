@@ -1,0 +1,451 @@
+{
+  "meta": {
+    "company": "amazon",
+    "notes": [
+      "All scoring should check whether the answer actually demonstrates Amazon's Leadership Principles, not just name-drops them.",
+      "1 = very weak / almost no evidence; 3 = moderate / acceptable; 5 = very strong / model answer.",
+      "Feedback tone: strict but constructive, like a coach who genuinely wants you to get the offer."
+    ]
+  },
+  "dimensions": {
+    "product_sense": {
+      "name": "Product Sense / Product Design",
+      "question_examples": [
+        "Design a new product to improve the Amazon shopping experience.",
+        "How would you improve the product detail page for Amazon customers?"
+      ],
+      "subdimensions": {
+        "clarity_and_structure": {
+          "description": "Whether the answer has clear assumptions, a game plan, and a clearly segmented structure (framing how they'll break down the problem up front, rather than jumping straight to a solution).",
+          "good_signals": [
+            "Opens by restating the problem, clarifying goals and constraints, and making explicit assumptions where needed.",
+            "States their process up front, e.g.: customer first, then pain points, then solution + metrics.",
+            "Every paragraph has a clear topic sentence with natural transitions."
+          ],
+          "bad_signals": [
+            "Jumps straight into listing solutions or features with no framing at all.",
+            "Rambles with no paragraph structure, reads like stream of consciousness.",
+            "Never signals which part of the answer they're currently in (e.g. user, problem, solution)."
+          ],
+          "scoring_guide": {
+            "1": "No structure at all — the answer is scattered and hard to follow.",
+            "3": "Has basic structure but inconsistent — some sections are clear, others jump around.",
+            "5": "Clearly structured throughout, like walking the interviewer through a design process step by step."
+          }
+        },
+        "customer_obsession_and_motivation": {
+          "description": "Whether the answer explains why this product/problem matters starting from the customer, demonstrating Amazon's Customer Obsession.",
+          "good_signals": [
+            "Clearly describes the situation, needs, and pain points of a specific customer segment rather than a generic 'users'.",
+            "Connects concrete behavior and emotion with framing like 'If I were this customer, what I'd care most about is...'.",
+            "Ties back to Amazon's long-term relationship with customers (trust, convenience, low friction)."
+          ],
+          "bad_signals": [
+            "Starts purely from business/revenue with no discussion of customer experience at all.",
+            "Uses vague language like 'provide a better experience' without defining what 'better' means.",
+            "Ignores the specific value of the Amazon ecosystem to customers, e.g. selection, low prices, convenience."
+          ],
+          "scoring_guide": {
+            "1": "Barely mentions the customer, or only in very generic terms.",
+            "3": "Has basic customer framing but not concrete or situational enough.",
+            "5": "Genuinely feels like they understand a specific type of Amazon customer's life and concrete pain points."
+          }
+        },
+        "segmentation_and_focus": {
+          "description": "Whether users/use cases are reasonably segmented, and whether the candidate picks one clear focus to go deep on.",
+          "good_signals": [
+            "Lists several possible user segments and explains why their needs differ.",
+            "Clearly picks one primary segment and explains why (impact, fit, underserved).",
+            "All subsequent problem framing and solutioning stays aimed at that segment, without drifting to others."
+          ],
+          "bad_signals": [
+            "The whole answer talks about 'all users' with no real focus.",
+            "Segments are defined too superficially (e.g. only by age/region) without connecting to motivation and behavior.",
+            "Keeps switching the target audience mid-answer, so the story falls apart."
+          ],
+          "scoring_guide": {
+            "1": "No segmentation at all — fully one-size-fits-all.",
+            "3": "Some segmentation attempted but unclear, or the reasoning for the chosen focus is weak.",
+            "5": "Segments are clear and mutually exclusive, and the answer stays consistently focused on the chosen one."
+          }
+        },
+        "problem_identification": {
+          "description": "Whether the candidate genuinely understands and concretely describes the customer problem to solve, rather than jumping straight to features.",
+          "good_signals": [
+            "Describes the pain point with a concrete scenario/example, e.g. exactly where in a flow customers get stuck.",
+            "Distinguishes between a 'want/wish' and an actual 'blocker/problem'.",
+            "Connects the problem to its impact (e.g. conversion drop, loss of trust, rising return rate)."
+          ],
+          "bad_signals": [
+            "Treats a feature request as the problem itself, e.g. 'there's no recommendation system, so we need one'.",
+            "Describes the problem too abstractly to imagine happening to a real user.",
+            "Lists a pile of problems with no prioritization."
+          ],
+          "scoring_guide": {
+            "1": "Doesn't show what specific problem is actually being solved.",
+            "3": "Lists a few reasonable problems, but not deep enough or unprioritized.",
+            "5": "Problem is concrete and prioritized, and directly drives the design decisions that follow."
+          }
+        },
+        "solution_quality_and_tradeoffs": {
+          "description": "Whether the proposed solution has enough depth, a clearly scoped v1, and trade-offs that fit Amazon's style.",
+          "good_signals": [
+            "States the high-level solution direction first, then breaks it into a few key experience/feature modules.",
+            "Clearly defines v1 vs. future extensions, showing judgment (Bias for Action, not just idle ideation).",
+            "Calls out risks and downsides, and explains how to mitigate them."
+          ],
+          "bad_signals": [
+            "Throws out ideas like a feature list with no connection or prioritization.",
+            "v1 tries to do too much, unrealistic given resources and time-to-value.",
+            "Never mentions any risk, failure mode, or constraint."
+          ],
+          "scoring_guide": {
+            "1": "Solution is scattered or clearly unrealistic.",
+            "3": "Has a roughly reasonable direction, but v1 scope / trade-offs are unclear.",
+            "5": "Proposes a convincing, practical v1 and clearly explains why it's designed that way."
+          }
+        }
+      }
+    },
+    "analytical_execution": {
+      "name": "Analytical / Execution / Metrics",
+      "question_examples": [
+        "How would you measure success for Amazon Prime Video?",
+        "Sign-ups for Amazon Fresh dropped by 20%. How would you investigate?"
+      ],
+      "subdimensions": {
+        "goal_definition": {
+          "description": "Whether the candidate clearly defines what goal or success state the problem is meant to achieve.",
+          "good_signals": [
+            "Clearly distinguishes input vs. output metrics.",
+            "Asks up front, 'What are we actually trying to optimize for — growth? experience? cost?'.",
+            "Connects back to Amazon's long-term value: customer experience, traffic, selection, profitability, etc."
+          ],
+          "bad_signals": [
+            "Jumps straight into listing KPIs without explaining why they're the right ones.",
+            "Fixates on a single metric with no consideration of balance or side effects.",
+            "Never addresses the relationship between long-term and short-term goals."
+          ]
+        },
+        "metric_selection_and_reasoning": {
+          "description": "Which metrics are chosen, why, and whether there are guardrail metrics.",
+          "good_signals": [
+            "Proposes 1-2 north star metrics paired with 3-5 supporting/guardrail metrics.",
+            "Explains what user behavior or business outcome each metric represents.",
+            "Considers trade-offs, e.g. conversion vs. average order value."
+          ],
+          "bad_signals": [
+            "Piles on metrics arbitrarily with no prioritization.",
+            "Chosen metrics aren't actually measurable or aren't related to the problem.",
+            "Forgets qualitative/behavioral metrics related to user experience."
+          ]
+        },
+        "structured_debugging_and_hypotheses": {
+          "description": "When facing an anomalous metric, whether the candidate systematically hypothesizes causes and designs ways to validate them.",
+          "good_signals": [
+            "First distinguishes whether this is a tracking issue vs. a real behavior change.",
+            "Hypothesizes in layers (traffic / conversion / retention / supply, etc.).",
+            "Proposes concrete experiments or analysis methods to validate (A/B tests, cohort analysis, funnel breakdown)."
+          ],
+          "bad_signals": [
+            "Guesses at causes purely on intuition with no systematic breakdown.",
+            "Forgets to rule out instrumentation/logging errors.",
+            "Never proposes any concrete way to validate a hypothesis."
+          ]
+        },
+        "prioritization_and_tradeoffs": {
+          "description": "Given multiple possible solutions or experiments, whether there's a clear prioritization.",
+          "good_signals": [
+            "Prioritizes using an impact vs. effort/risk framing.",
+            "Accounts for Amazon's resource and time constraints rather than greedily trying to do everything at once.",
+            "Explains why a given experiment goes first, and what the next step is if it fails."
+          ],
+          "bad_signals": [
+            "Treats every idea as equally high priority.",
+            "Doesn't consider execution cost or technical risk.",
+            "Picks their favorite idea with no clear reasoning."
+          ]
+        }
+      }
+    },
+    "leadership_principles_behavioral": {
+      "name": "Leadership Principles / Behavioral",
+      "question_examples": [
+        "Tell me about a time you disagreed with your manager.",
+        "Tell me about a time you had to make a difficult trade-off."
+      ],
+      "subdimensions": {
+        "story_structure_star": {
+          "description": "Whether the story is told clearly using a STAR / STAR+ structure, rather than a rambling description.",
+          "good_signals": [
+            "Clearly states Situation / Task / Action / Result, ideally with a Reflection as well.",
+            "Every part has a clear timeline and clearly defined roles.",
+            "The result is concrete, with numbers or an observable change."
+          ],
+          "bad_signals": [
+            "Everything is blended together — unclear what the problem was, what they did, and what the result was.",
+            "The result is vague, e.g. 'everyone was happy' with no concrete evidence.",
+            "The story is too short or shallow, like routine day-to-day work."
+          ]
+        },
+        "ownership_and_decision_making": {
+          "description": "Whether the candidate shows accountability for outcomes and proactively elevated their perspective to make decisions, rather than just executing instructions.",
+          "good_signals": [
+            "Clearly states they proactively identified the problem or proposed the solution, rather than being assigned it.",
+            "Explains their own role in the key decision, including the risk and consequences they owned.",
+            "Pushed back / exercised influence when facing resistance, rather than passively accepting it."
+          ],
+          "bad_signals": [
+            "The whole story sounds like they were just following someone else's plan.",
+            "Blames the problem or failure entirely on other people or circumstances.",
+            "No evidence of long-term thinking anywhere in the story."
+          ]
+        },
+        "alignment_with_specific_lp": {
+          "description": "Whether the story actually demonstrates a specific Leadership Principle (e.g. Dive Deep / Bias for Action / Learn and Be Curious), rather than just claiming 'this shows X'.",
+          "good_signals": [
+            "The action details themselves show the LP in practice, e.g. for Dive Deep, proactively looking at data/logs/user feedback.",
+            "Connects to the spirit of the LP, rather than just reciting the slogan.",
+            "Reiterates the LP lesson learned in the result or reflection section."
+          ],
+          "bad_signals": [
+            "Only says 'this is Ownership' at the start or end of the story, with no evidence in the middle.",
+            "Crams in too many LPs at once, so each one is weakly supported.",
+            "The story content actually contradicts the claimed LP, e.g. claiming Bias for Action while the whole story is about delaying."
+          ]
+        },
+        "reflection_and_learning": {
+          "description": "Whether there's genuine reflection on the experience, and an explanation of how behavior changed afterward.",
+          "good_signals": [
+            "Admits there were things they could have done better, not afraid to name a real misstep.",
+            "States a concrete, observable behavior change (e.g. how they'd align earlier next time, or design a better mechanism).",
+            "Ties the reflection back to an Amazon LP or broader career growth."
+          ],
+          "bad_signals": [
+            "The 'lesson learned' is vague, e.g. 'communicate more'.",
+            "No reflection at all — just showcasing success.",
+            "The reflection is unrelated to the actual story."
+          ]
+        }
+      }
+    },
+    "strategy_business": {
+      "name": "Strategy / Business Thinking",
+      "question_examples": [
+        "How would you grow Amazon Prime usage over the next 3 years?",
+        "Should Amazon enter market X? Why or why not?"
+      ],
+      "subdimensions": {
+        "structured_market_and_customer_analysis": {
+          "description": "Whether market, competition, and customers are analyzed in a structured way, rather than just a pile of buzzwords.",
+          "good_signals": [
+            "Starts by roughly scoping the market (TAM/SAM/SOM is fine at a rough level).",
+            "Clearly describes the differences and needs across target customer groups.",
+            "Identifies key competitors/alternatives and Amazon's relative strengths and weaknesses."
+          ],
+          "bad_signals": [
+            "Just says the market is big or growing fast, with no structure at all.",
+            "Ignores Amazon's existing capabilities, as if this were a brand-new startup.",
+            "Recites business-school frameworks with no real connection to Amazon's actual context."
+          ]
+        },
+        "amazon_ecosystem_and_flywheel_fit": {
+          "description": "Whether the strategy accounts for Amazon's existing flywheel (lower prices -> more customers -> more sellers -> better experience).",
+          "good_signals": [
+            "Discusses how the strategy affects traffic, selection, price, and convenience.",
+            "Explains how this strategy reinforces (or is reinforced by) Prime, Marketplace, AWS, and other services.",
+            "Considers the impact on sellers/partners/internal teams."
+          ],
+          "bad_signals": [
+            "The strategy could apply to any company — nothing Amazon-specific about it.",
+            "Ignores the supply side / seller perspective entirely, only talks about consumers.",
+            "Only discusses short-term revenue, no consideration of long-term trust and experience."
+          ]
+        },
+        "prioritization_and_roadmapping": {
+          "description": "Whether the strategy can be broken down into an actionable roadmap with a clear sequence.",
+          "good_signals": [
+            "Proposes 2-3 main strategic directions, each broken into milestones or initiatives.",
+            "Accounts for resource constraints and risk, clearly stating what comes first and what comes later.",
+            "Describes how each strategic direction's success would be tracked with metrics."
+          ],
+          "bad_signals": [
+            "Stays very high-level with no concrete execution steps at all.",
+            "The 'roadmap' is just a timeline with no real strategic thread connecting it.",
+            "Ignores risks and dependencies."
+          ]
+        }
+      }
+    },
+    "estimation": {
+      "name": "Estimation / Guesstimate",
+      "question_examples": [
+        "Estimate the number of packages Amazon delivers per day in the US.",
+        "How many Echo devices could Amazon sell in country X in year one?"
+      ],
+      "subdimensions": {
+        "assumption_clarity": {
+          "description": "Whether every assumption made is clearly stated, and whether the candidate checks that it's reasonable.",
+          "good_signals": [
+            "States the key assumptions (population, penetration rate, frequency, etc.) before calculating.",
+            "Assumptions are logically consistent with each other, not contradictory.",
+            "Willing to adjust an assumption when needed, and explains why."
+          ],
+          "bad_signals": [
+            "Throws out numbers with no stated source.",
+            "Realizes partway through that an earlier assumption was wrong, but doesn't fix it.",
+            "An assumption is clearly unreasonable (e.g. every person orders 10 times a day)."
+          ]
+        },
+        "problem_breakdown_and_math": {
+          "description": "Whether the problem is reasonably broken down and the math comes out roughly correct.",
+          "good_signals": [
+            "Breaks the big problem into a few dimensions (population x penetration rate x frequency x average value, etc.).",
+            "The calculation process is orderly and clearly narrated out loud.",
+            "Sanity-checks the final result to see if it looks reasonable."
+          ],
+          "bad_signals": [
+            "The breakdown is disorganized or double-counts the same group of people.",
+            "Gets lost partway through without reorganizing the steps.",
+            "No sanity check at all."
+          ]
+        },
+        "communication_and_poise": {
+          "description": "Whether the candidate stays calm and clear while estimating out loud, and how they handle uncertainty.",
+          "good_signals": [
+            "Narrates their thinking while calculating, so the interviewer can follow along.",
+            "When uncertain, is willing to say 'there are two ways to break this down, I'll go with this one first'.",
+            "Doesn't get thrown off entirely by a small mistake."
+          ],
+          "bad_signals": [
+            "Panics the moment a calculation error is noticed, and the whole answer falls apart.",
+            "Never verbalizes their thought process, so it's unclear how they're thinking.",
+            "Obsesses over precise decimal points, losing sight of the big picture."
+          ]
+        }
+      }
+    },
+    "system_design": {
+      "name": "System Design / TPM",
+      "question_examples": [
+        "Design a system to detect fake product reviews at scale.",
+        "Design a notification system that reliably reaches millions of customers."
+      ],
+      "subdimensions": {
+        "requirements_and_scoping": {
+          "description": "Whether the candidate clarifies functional and non-functional requirements (scale, latency, consistency, who the users are) before proposing a design, rather than designing in a vacuum.",
+          "good_signals": [
+            "Asks about scale (requests/day, number of users), latency expectations, and consistency needs up front.",
+            "Clarifies which use cases are in scope for v1 vs later.",
+            "States explicit assumptions when the interviewer doesn't provide a number."
+          ],
+          "bad_signals": [
+            "Jumps straight into naming technologies/components with no sense of scale or constraints.",
+            "Never distinguishes must-have requirements from nice-to-haves.",
+            "Ignores who actually uses the system and why."
+          ]
+        },
+        "high_level_architecture": {
+          "description": "Whether the candidate proposes a clear, sensible breakdown of the system into major components and explains how data/requests flow between them.",
+          "good_signals": [
+            "Breaks the system into a small number of clear components (e.g. ingestion, storage, serving, ranking) with a simple story for how they connect.",
+            "Explains the role of each component in plain language before naming any specific technology.",
+            "Keeps the design at the right altitude for a PM/TPM — enough structure to reason about trade-offs, not a line-by-line engineering spec."
+          ],
+          "bad_signals": [
+            "Describes components with no explanation of how they interact.",
+            "Gets lost in low-level implementation detail (specific algorithms, exact schemas) instead of the overall shape.",
+            "The design doesn't actually address the stated requirements."
+          ]
+        },
+        "scalability_and_tradeoffs": {
+          "description": "Whether the candidate identifies where the design would break under scale and reasons about real trade-offs (e.g. consistency vs. availability, cost vs. latency, build vs. buy).",
+          "good_signals": [
+            "Identifies the most likely bottleneck (e.g. a hot database table, a single point of failure) and proposes a fix.",
+            "Explicitly names a trade-off and picks a side with a reason, rather than listing pros/cons with no decision.",
+            "Considers cost and engineering effort, not just theoretical scalability."
+          ],
+          "bad_signals": [
+            "Treats the system as if it will always run at small scale with no failure modes.",
+            "Lists trade-offs without ever committing to a recommendation.",
+            "Adds complexity (e.g. a new data store) without justifying why it's needed."
+          ]
+        },
+        "operational_and_cross_team_thinking": {
+          "description": "Whether the candidate addresses how the system would be monitored, rolled out safely, and delivered in practice — including working with engineering and other teams, which is central to the TPM angle of this question type.",
+          "good_signals": [
+            "Mentions how they'd monitor health (key metrics/alerts) and detect failures after launch.",
+            "Describes a staged rollout (e.g. internal dogfood, small percentage, then full launch) rather than a single big-bang release.",
+            "Talks about which teams (engineering, data, ops) need to be involved and where dependencies or risks lie."
+          ],
+          "bad_signals": [
+            "The design ends at launch with no mention of what happens operationally afterward.",
+            "No acknowledgment that other teams or dependencies exist.",
+            "Ignores failure handling entirely, as if the system will never go down."
+          ]
+        }
+      }
+    },
+    "ai_pm": {
+      "name": "AI Product Manager",
+      "question_examples": [
+        "Design an AI feature to help customers find products using natural language.",
+        "How would you decide whether a recommendation model change is ready to launch?"
+      ],
+      "subdimensions": {
+        "problem_ml_fit": {
+          "description": "Whether the candidate first establishes that the problem genuinely calls for an ML/AI solution — and what that solution needs to be good at — rather than assuming AI is the answer by default.",
+          "good_signals": [
+            "Asks what a non-ML solution (rules, heuristics) would look like and explains concretely why ML does better here.",
+            "Identifies what the model actually needs to predict or generate, in plain language, before discussing data or architecture.",
+            "Considers user trust and explainability implications of using AI for this specific problem."
+          ],
+          "bad_signals": [
+            "Assumes 'use AI' is the answer without explaining what problem it solves better than a simpler approach.",
+            "Confuses the AI feature with the product goal, e.g. treats 'add a recommendation model' as the goal itself.",
+            "Never considers whether a simpler, faster-to-ship solution would work almost as well."
+          ]
+        },
+        "data_and_evaluation_strategy": {
+          "description": "Whether the candidate thinks concretely about what data the model needs and how they would measure whether it's actually working, both offline and after launch.",
+          "good_signals": [
+            "Names the specific data/labels needed and where they'd realistically come from.",
+            "Proposes concrete offline metrics (e.g. precision/recall, relevance) AND online/business metrics, and explains why both matter.",
+            "Considers what 'good enough to ship' looks like, not just 'best possible model'."
+          ],
+          "bad_signals": [
+            "Never mentions data at all, as if the model appears fully trained.",
+            "Picks a single vague metric like 'accuracy' with no connection to the business or customer outcome.",
+            "Confuses model-quality metrics with product success metrics, or never distinguishes them."
+          ]
+        },
+        "responsible_ai_and_risk": {
+          "description": "Whether the candidate proactively considers failure modes, bias/fairness, and safety risks the AI feature could introduce, and how to guard against them.",
+          "good_signals": [
+            "Names a concrete failure mode (e.g. biased recommendations, hallucinated content, unfair treatment of a customer segment) specific to this feature.",
+            "Proposes a concrete guardrail: human-in-the-loop review, confidence thresholds, fallback to a non-AI path, or a way to catch bad outputs before they reach customers.",
+            "Considers customer trust and how a visible AI mistake would affect it."
+          ],
+          "bad_signals": [
+            "Treats the model as if it will never be wrong.",
+            "Mentions 'responsible AI' only as a buzzword with no concrete mechanism.",
+            "Ignores the specific risk profile of this feature (e.g. financial, safety, reputational harm)."
+          ]
+        },
+        "iteration_and_feedback_loops": {
+          "description": "Whether the candidate describes a realistic plan for launching, monitoring, and improving the AI feature over time, including how model drift and user feedback are handled.",
+          "good_signals": [
+            "Describes a staged launch (e.g. shadow mode, small percentage rollout) before a full launch.",
+            "Explains how they'd detect the model degrading over time (drift, changing user behavior) after launch.",
+            "Describes a concrete feedback loop, e.g. using customer actions or explicit feedback to retrain or tune the model."
+          ],
+          "bad_signals": [
+            "Treats the launch as the finish line with no plan for what happens after.",
+            "Never mentions how they'd know if the model gets worse over time.",
+            "No mechanism for turning real-world usage back into model improvement."
+          ]
+        }
+      }
+    }
+  }
+}

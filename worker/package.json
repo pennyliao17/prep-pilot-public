@@ -1,0 +1,25 @@
+{
+	"name": "worker",
+	"version": "0.0.0",
+	"private": true,
+	"scripts": {
+		"deploy": "wrangler deploy",
+		"dev": "wrangler dev",
+		"start": "wrangler dev",
+		"test": "vitest",
+		"cf-typegen": "wrangler types",
+		"migrate": "node --env-file=.env scripts/migrate.mjs",
+		"rotate-secrets": "node scripts/rotate-secrets.mjs .dev.vars .env"
+	},
+	"devDependencies": {
+		"@cloudflare/vitest-pool-workers": "^0.18.4",
+		"@types/pg": "^8.20.0",
+		"pg": "^8.22.0",
+		"typescript": "^5.5.2",
+		"vitest": "^4.1.10",
+		"wrangler": "^4.107.0"
+	},
+	"dependencies": {
+		"@neondatabase/serverless": "^1.1.0"
+	}
+}

@@ -1,0 +1,67 @@
+{
+	"name": "preppilot-worker",
+	"main": "src/index.ts",
+	"compatibility_date": "2024-09-23",
+	"workers_dev": true,
+	"observability": {
+		"enabled": true,
+	},
+	"ai": {
+		"binding": "AI",
+	},
+	// Not secrets: GOOGLE_CLIENT_ID is meant to be public — it ships in the
+	// frontend bundle for every Google Identity Services integration.
+	// ALLOWED_EMAIL, DEMO_USERNAME and DEMO_PASSWORD_HASH are deliberately NOT
+	// here: they are Cloudflare secrets (and in .dev.vars locally) to keep the
+	// owner's email and the reviewer demo credentials out of a public repo
+	// (see docs/ai-rules.md §1.3).
+	"vars": {
+		"GOOGLE_CLIENT_ID": "540379563088-p3o6adik7r3qudl2au1h3fncpft72kfb.apps.googleusercontent.com",
+	},
+	// Stores pending email-sign-in OTP codes. KV's native per-key TTL maps
+	// directly onto "code expires in 1 day" with no cleanup job needed.
+	"kv_namespaces": [
+		{
+			"binding": "OTP_KV",
+			"id": "2fe0e8ab0cef428fb0c35a550bf8ac89",
+		},
+	],
+	"ratelimits": [
+		{
+			"name": "FEEDBACK_RATE_LIMITER",
+			"namespace_id": "1001",
+			"simple": {
+				"limit": 20,
+				"period": 60,
+			},
+		},
+		// Prevents /api/auth/email/start from being used to spam an arbitrary
+		// inbox or burn through Resend's free-tier quota.
+		{
+			"name": "EMAIL_OTP_RATE_LIMITER",
+			"namespace_id": "1002",
+			"simple": {
+				"limit": 5,
+				"period": 60,
+			},
+		},
+		// Throttles POST /api/auth/demo so the shared demo password can't be
+		// brute-forced — tight on purpose, this login is for one known
+		// reviewer, not a public sign-in form.
+		{
+			"name": "DEMO_LOGIN_RATE_LIMITER",
+			"namespace_id": "1004",
+			"simple": {
+				"limit": 10,
+				"period": 60,
+			},
+		},
+	],
+	// Daily resume_coach AI-output expiry cleanup (see the scheduled() handler
+	// in src/index.ts) — keeps Neon's free-tier storage from filling up with
+	// generated results. Runs at 09:00 UTC (~5am ET / 5pm Taipei), an
+	// arbitrary off-peak-ish slot since this is a single-user app.
+	"triggers": {
+		"crons": ["0 9 * * *"],
+	},
+}

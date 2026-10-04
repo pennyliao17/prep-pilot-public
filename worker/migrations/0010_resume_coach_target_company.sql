@@ -1,0 +1,12 @@
+-- Adds a second company (Make, make.com) to the app (2026-08-14): the
+-- Resume Coach needs to know which company's values framework to write
+-- toward when generating a story, separate from story_bank.company (which
+-- company the *experience itself* happened at — see migration 0009). This
+-- is a single persisted setting on the profile, not a per-request param,
+-- matching how resume_text/job_description already work.
+--
+-- Defaults to 'amazon' so the existing single profile row (and any future
+-- row that doesn't set it explicitly) keeps generating Amazon LP-style
+-- results exactly as before this migration — no behavior change for
+-- existing users until they explicitly switch it.
+alter table resume_coach_profile add column if not exists target_company text not null default 'amazon';
