@@ -138,3 +138,5 @@ Stories are added and managed in a single "Add a new story" block (company, titl
   - Before replying, explain the intended UI change and its reasons in 3–5 sentences
   - Produce React components with a clear structure (avoid deep nesting) and short comments where things are not obvious
 - For a large UI refactor proposal: first give a wireframe-level text description, then implement the code.
+
+- Focus states are green (a green-dark border and soft halo on text fields, a green-dark outline on other controls); never leave the browser's default blue ring.

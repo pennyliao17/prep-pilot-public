@@ -47,6 +47,28 @@ select {
 	font: inherit;
 }
 
+/* Focus is green everywhere (never the browser's default blue). */
+:root {
+	accent-color: var(--green-dark);
+}
+
+:focus-visible {
+	outline: 2px solid var(--green-dark);
+	outline-offset: 2px;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+	outline: none;
+	border-color: var(--green-dark) !important;
+	box-shadow: 0 0 0 3px rgba(143, 217, 168, 0.55);
+}
+
+::selection {
+	background: rgba(143, 217, 168, 0.6);
+}
+
 @media (prefers-reduced-motion: reduce) {
 	*,
 	*::before,
